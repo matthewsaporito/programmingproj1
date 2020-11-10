@@ -6,11 +6,11 @@ Created on Tue Oct 27 18:18:05 2020
 @author: sarasterlie and Anna Pekarova
 """
 
-from .dataPlot import *
-from .dataStatistics import *
-from .dataLoad import *
-from .filterData import *
-from .utils import showMenu
+from methods.dataPlot import *
+from methods.dataStatistics import *
+from methods.dataLoad import *
+from methods.filterData import *
+from methods.utils import showMenu
 import numpy as np
 
     
@@ -18,14 +18,14 @@ data = None
 filtered_data = None
 
 
-showMenu()
+
 #displays main menu.
 
 while True:
-    
+    showMenu()
     selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
 
-    if selection in {2, 3, 4} and not data:
+    if selection in [2, 3, 4] and data is None:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
         showMenu()
         continue
