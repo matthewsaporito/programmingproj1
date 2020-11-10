@@ -62,12 +62,17 @@ def dataPlot(data):
         } 
         
         out = []  # empty list
-        print(bacteria_development)
+        
         for n, bacteria_data in bacteria_development.items():  # for every n and its bacteria_data in bacteria_development dictionary
             bacteria_data = sorted(bacteria_data, key=lambda item: item[0])  # sorts by temperature the growth rate
             x_vals, y_vals = zip(*bacteria_data)  # creates a tuple of x and y values by unzipping bacteria_data
             name = bacteria_dictionary[n]  # also assigns a name for n from bacteria_dictionary
-            out.append((x_vals, y_vals, name))  # puts the values into the empty list
+            if bacteria_data:
+                bacteria_data = sorted(bacteria_data, key=lambda item: item[0])  # sorts by temperature the growth rate
+                print('DATA', bacteria_data)
+                x_vals, y_vals = zip(*bacteria_data)  # creates a tuple of x and y values by unzipping bacteria_data
+                name = bacteria_dictionary[n]  # also assigns a name for n from bacteria_dictionary
+                out.append((x_vals, y_vals, name))  # puts the values into the empty list
             
         return out
     
