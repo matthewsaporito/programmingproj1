@@ -6,11 +6,11 @@ Created on Tue Oct 27 18:18:05 2020
 @author: sarasterlie and Anna Pekarova
 """
 
-from .dataPlot import *
-from .dataStatistics import *
-from .dataLoad import *
-from .filterData import *
-from .utils import showMenu
+from methods.dataPlot import *
+from methods.dataStatistics import *
+from methods.dataLoad import *
+from methods.filterData import *
+from methods.utils import showMenu
 import numpy as np
 
     
