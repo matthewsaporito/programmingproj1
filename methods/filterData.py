@@ -10,7 +10,7 @@ from .utils import showMenu
 import numpy as np
 
 
-def filterData(prompt, data):
+def filterData(data):
     print("Filters:")
     print("1. Filter bacteria")
     print("2. Filter grwoth rate")

@@ -17,14 +17,14 @@ import numpy as np
 data = None
 
 
-showMenu()
+
 #displays main menu.
 
 while True:
-    
+    showMenu()
     selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
 
-    if selection in {2, 3, 4} and not data:
+    if selection in [2, 3, 4] and data is None:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
         showMenu()
         continue

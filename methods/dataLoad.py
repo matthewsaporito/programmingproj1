@@ -15,9 +15,9 @@ Created on Thu Oct 29 13:49:11 2020
 import os
 import numpy as np
 
-os.chdir("/Users/Matt/Desktop/Data files for exercise modules 4")
+#os.chdir("/Users/Matt/Desktop/Data files for exercise modules 4")
 
-filename = 'test.txt'
+#filename = 'test.txt'
 
 
 
