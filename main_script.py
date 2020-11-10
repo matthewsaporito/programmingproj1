@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 27 18:18:05 2020
 
-@author: sarasterlie and Anna Pekarova
+@author: sarasterlie
 """
 
 from methods.dataPlot import *
@@ -33,7 +33,7 @@ while True:
         showMenu()
         continue
     
-    active_data = filtered_data if filtered_data is not None else data 
+    active_data = filtered_data if filtered_data is not None else data
        
     try: 
         if selection == 1:

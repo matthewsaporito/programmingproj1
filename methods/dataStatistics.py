@@ -72,10 +72,6 @@ def inputStatistics(  # function which asks the user which statistic he/she woul
     while not(np.any(statistic == np.arange(len(options))+1)):
         statistic = inputNumber("Which statistics would you like to display?")
         
-    # if quit
-    
-    # displayStatistics
-        
     return statistic
 
 
@@ -121,7 +117,7 @@ def dataStatistics(data, statistic):
     
     
     
-def displayStatistic(data, statistic):
+def displayStatistic(data, statistic):  # function which displays description of statistics from description dictionary and calls dataStatistics
     print(DESCRIPTIONS[statistic], dataStatistics(data, statistic))
 
 

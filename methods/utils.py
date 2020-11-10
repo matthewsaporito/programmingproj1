@@ -2,7 +2,7 @@
 """
 Created on Tue Nov 10 12:15:39 2020
 
-@author: apek
+@author: sarasterlie
 """
 # Menu options presented to user
 def showMenu():
