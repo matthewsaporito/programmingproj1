@@ -21,7 +21,7 @@ filename = 'test.txt'
 
 
 def filecheck():
-    
+    #checks that user file exists loads as 'data'
     filename = str(input("Please enter The file you whish to load:"))
     try:
         data = np.loadtxt(filename, delimiter=" ")
@@ -31,6 +31,7 @@ def filecheck():
         return filecheck()
     
 def validateData(data):
+    #checks that data file has 3 columns
     validated = []
     for i, item in enumerate(data):
         try:
@@ -47,7 +48,7 @@ def validateData(data):
     return data
 
 def dataLoad():
-      
+    # pulls data from filecheck and filters to keep only valid rows  
     bdata = filecheck()
         
     data = np.array(bdata)
@@ -61,7 +62,7 @@ def dataLoad():
     
     #print(data)
     
-    #error values by row
+    #error values by row, specifying error
     for i in range(len(bdata)):
         if bdata[i,0]<10:
             print("Temp is too low in row {:d}".format(i+1))
