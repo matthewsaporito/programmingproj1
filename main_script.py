@@ -23,6 +23,8 @@ filtered_data = None
 
 while True:
     showMenu()
+    
+    
     selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
 
     if selection in [2, 3, 4] and data is None:
@@ -30,7 +32,7 @@ while True:
         showMenu()
         continue
     
-    active_data = filtered_data or data 
+    active_data = filtered_data if filtered_data is not None else data 
        
     try: 
         if selection == 1:
