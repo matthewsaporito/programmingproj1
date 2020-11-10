@@ -64,17 +64,20 @@ def dataPlot(data):
         out = []  # empty list
 
         for n, bacteria_data in bacteria_development.items():  # for every n and its bacteria_data in bacteria_development dictionary
+            bacteria_data = sorted(bacteria_data, key=lambda item: item[0])
             x_vals, y_vals = zip(*bacteria_data)  # creates a tuple of x and y values by unzipping bacteria_data
             name = bacteria_dictionary[n]  # also assigns a name for n from bacteria_dictionary
             out.append((x_vals, y_vals, name))  # puts the values into the empty list
-        
+            
         return out
+    
     
     plt.axis([10, 60, 0, max(growth_rates) * 1.5])  # sets the range of the x axis to 10 - 60 and of the y axis from 0 to the max value of growth rate * 1.5, so there is space for the legend
     plt.title('Growth rate by temperature')  # title
     plt.xlabel('Temperature')  # label of x axis
     plt.ylabel('Growth rate')  # label of y axis
     for x_vals, y_vals, name in growth_data(data):  # get x, y values and name from the growth_data function 
+        
         plt.plot(x_vals, y_vals, label = name)  # plots these x, y values and uses the name as a label of the plot
     plt.legend(loc="best")  # places the legend at the best spot
     plt.show()
