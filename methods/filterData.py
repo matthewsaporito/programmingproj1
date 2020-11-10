@@ -14,13 +14,11 @@ def filterData(data):
     print("Filters:")
     print("1. Filter bacteria")
     print("2. Filter grwoth rate")
-    print("3. Reset filter")
-    print("4. Return to main menu")#prints menu for filtering data.
-        
+    print("3. No filter")
+    selection =int(input("Please enter on of the above options:" ))#takes user input 
+
     while True:
         
-        selection =int(input("Please enter on of the above options:" ))#takes user input 
-
         try:
             
             if selection == 1:
@@ -56,11 +54,7 @@ def filterData(data):
                       return data 
                 
             elif selection == 3:
-                return None
-            
-            elif selection == 4:
-                
-                showMenu()#returns to mainmenu if user input is 3. 
+                return None 
                 
         except ValueError:
                 print("Please choose an options: 1,2 or 3")#prints message if Valueerror occurs in filter-data menu. 
