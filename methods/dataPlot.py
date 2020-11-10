@@ -58,7 +58,7 @@ def dataPlot(data):
     def growth_data(data):
         '''function for easier reading'''
         bacteria_development = {  # dictionary of dictionaries, every bacteria id has a dictionary of temperatures and growth rates assigned
-            n: [(temperature, growth_rate) for temperature, growth_rate, bacteria in data if bacteria == n] for n in {1, 2, 3, 4}
+            n: [(temperature, growth_rate) for temperature, growth_rate, bacteria in data] for n in {1, 2, 3, 4}
         } 
         
         out = []  # empty list
