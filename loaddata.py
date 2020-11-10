@@ -46,8 +46,6 @@ def loadData(filename=None, delimiter=" "):
             continue
      
         return data
-    
-
         
         
         

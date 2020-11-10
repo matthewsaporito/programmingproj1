@@ -3,13 +3,11 @@
 """
 Created on Tue Oct 27 18:18:05 2020
 
-@author: sarasterlie and Anna Pekarova
+@author: sarasterlie
 """
 
 from.dataPlot import *
 from.loaddata import *
-from.dataStatistics import *
-from.filterData import *
 
 
 def showMenu():
@@ -38,7 +36,7 @@ while True:
         
     try:
         if selection == 1:
-            data = loadData(filename, delimiter=" ")
+            data = loadData(filename)
             
         elif selection== 2:
             rawdata = data
@@ -49,7 +47,7 @@ while True:
             displayStatistic(data, statistic)
             
         elif selection == 4:
-            dataPlot(data)
+            generatePlots(data)
             
         elif selection == 5:
             exit()
