@@ -4,7 +4,7 @@ Created on Tue Nov 10 12:15:39 2020
 
 @author: apek
 """
-
+# Menu options presented to user
 def showMenu():
     print ("1. Load Data")
     print ("2. Filter Data")
