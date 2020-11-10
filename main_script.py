@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 27 18:18:05 2020
 
-@author: sarasterlie
+@author: sarasterlie and Anna Pekarova
 """
 
 from.dataPlot import *
@@ -36,7 +36,7 @@ while True:
         
     try:
         if selection == 1:
-            data = loadData(filename)
+            data = dataLoad(filename)
             
         elif selection== 2:
             rawdata = data
@@ -47,7 +47,7 @@ while True:
             displayStatistic(data, statistic)
             
         elif selection == 4:
-            generatePlots(data)
+            dataPlot(data)
             
         elif selection == 5:
             exit()
