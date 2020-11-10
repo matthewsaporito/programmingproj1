@@ -17,7 +17,7 @@ import numpy as np
     
 data = None
 filtered_data = None
-
+active_filter = None
 
 
 #displays main menu.
@@ -41,8 +41,8 @@ while True:
             
         elif selection== 2:
             rawdata = data
-            filtered_data = filterData(active_data)
-          
+            filtered_data, active_filter = filterData(active_data, active_filter)
+           
         elif selection == 3:
             statistic = inputStatistics()
             displayStatistic(active_data, statistic)
