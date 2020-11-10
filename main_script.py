@@ -10,12 +10,9 @@ from .dataPlot import *
 from .dataStatistics import *
 from .dataLoad import *
 from .filterData import *
-from .utils import *
+from .utils import showMenu
 import numpy as np
 
-
-
-    
     
 data = None
 

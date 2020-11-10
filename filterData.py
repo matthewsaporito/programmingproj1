@@ -6,7 +6,7 @@ Created on Thu Oct 29 15:04:32 2020
 @author: sarasterlie
 """
 from .dataLoad import *
-from .utils import *
+from .utils import showMenu
 import numpy as np
 
 

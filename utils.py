@@ -11,3 +11,4 @@ def showMenu():
     print ("3. Display statistics")
     print ("4. Generate plots")
     print ("5. Quit")
+    
