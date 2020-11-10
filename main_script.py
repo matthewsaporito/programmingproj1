@@ -40,7 +40,7 @@ while True:
             
         elif selection== 2:
             rawdata = data
-            filtered_data = filterData(data)
+            filtered_data = filterData(active_data)
           
         elif selection == 3:
             statistic = inputStatistics()

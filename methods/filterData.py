@@ -25,9 +25,9 @@ def filterData(data):
                 
                 print("PLease choose a bacteria")
                 print("1. Salmonella enterica")
-                print("2.Bacillus cereus")
+                print("2. Bacillus cereus")
                 print("3. Listeria")
-                print("4.Brochothrix thermosphacta")
+                print("4. Brochothrix thermosphacta")
 
                 bacteria = int(input("please choose an option, 1 to 4:"))#if user input is 1, bacteria-menu is displayed.
             
@@ -58,7 +58,7 @@ def filterData(data):
         except ValueError:
                 print("Please choose an options: 1,2 or 3")#prints message if Valueerror occurs in filter-data menu. 
     
-  
+
 
  
         
