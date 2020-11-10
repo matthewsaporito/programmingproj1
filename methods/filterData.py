@@ -30,15 +30,14 @@ def filterData(data):
                 print("4.Brochothrix thermosphacta")
 
                 bacteria = int(input("please choose an option, 1 to 4:"))#if user input is 1, bacteria-menu is displayed.
-    
             
                 if bacteria == 1 or bacteria == 2 or bacteria == 3 or bacteria == 4:#filters for bacteria
                 
                     data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria
+                    return data
                 else:           
                     print("Please type a number: 1, 2, 3 or 4")#prints message if user input dosn't fufill requriments.
-                    
-                    return data  
+                     
             
     
             elif selection == 2:
