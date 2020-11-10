@@ -5,8 +5,9 @@ Created on Thu Oct 29 15:04:32 2020
 
 @author: sarasterlie
 """
-from.dataLoad import *
-from.main_script import showMenu
+from .dataLoad import *
+from .utils import *
+import numpy as np
 
 
 def filterData(prompt, data):
@@ -54,6 +55,7 @@ def filterData(prompt, data):
                 
     
             elif selection == 3:
+                
                 showMenu()
                 
         except ValueError:

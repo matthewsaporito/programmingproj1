@@ -5,7 +5,7 @@ Created on Thu Oct 29 10:00:08 2020
 @author: Anna Pekarova
 """
 
-
+import numpy as np
 import matplotlib.pyplot as plt
 
 

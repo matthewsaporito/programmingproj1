@@ -6,18 +6,15 @@ Created on Tue Oct 27 18:18:05 2020
 @author: sarasterlie and Anna Pekarova
 """
 
-from.dataPlot import *
-from.dataStatistics import *
-from.dataLoad import *
-from.filterData import *
+from .dataPlot import *
+from .dataStatistics import *
+from .dataLoad import *
+from .filterData import *
+from .utils import *
+import numpy as np
 
 
-def showMenu():
-    print ("1. Load Data")
-    print ("2. Filter Data")
-    print ("3. Display statistics")
-    print ("4. Generate plots")
-    print ("5. Quit")
+
     
     
 data = None

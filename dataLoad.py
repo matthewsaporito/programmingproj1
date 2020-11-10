@@ -43,8 +43,6 @@ def dataLoad():
     data = data[data[:,2]<=4]
     #print(data)
     
-    filteredData = data
-    
     #error values by row
     for i in range(len(bdata)):
         if bdata[i,0]<10:

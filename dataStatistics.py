@@ -29,7 +29,7 @@ def inputNumber(prompt):
   
 
 
-DESCRIPTIONS = {
+DESCRIPTIONS = { #Dictionary with description of each statistic
     "Mean Temperature": "Mean (average) Temperature.",
     "Mean Growth rate": "Mean (average) Growth rate.",
     "Std Temperature": "Standard deviation of Temperature.",
@@ -40,7 +40,7 @@ DESCRIPTIONS = {
 }
     
     
-def inputStatistics(
+def inputStatistics(  # function which asks the user which statistic he/she would like to perform
         options=np.array([
             "Mean Temperature",
             "Mean Growth rate",
