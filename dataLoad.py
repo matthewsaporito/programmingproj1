@@ -10,6 +10,7 @@ Created on Thu Oct 29 13:49:11 2020
 #load data, skipping invalid lines, return line where error occured and desc
 #Column 0 must be a number between 10-60
 #Column 1 must be a positive number
+#Column 2 must be between 1-4
 
 import os
 import numpy as np
@@ -48,7 +49,7 @@ def validateData(data):
     return data
 
 def dataLoad():
-    # pulls data from filecheck and filters to keep only valid rows  
+    # pulls data from filecheck and filters to keep only valid rows from conditions above
     bdata = filecheck()
         
     data = np.array(bdata)
