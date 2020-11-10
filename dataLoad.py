@@ -24,11 +24,27 @@ def filecheck():
     
     filename = str(input("Please enter The file you whish to load:"))
     try:
-        data = np.loadtxt(filename, delimiter="")
+        data = np.loadtxt(filename, delimiter=" ")
         return data
     except OSError:
         print("The file could not be found. Please Enter an existing file")
         return filecheck()
+    
+def validateData(data):
+    validated = []
+    for i, item in enumerate(data):
+        try:
+            
+            size = len(item)
+            assert size == 3
+            
+            validated += [item]
+            
+        except AssertionError as e:
+            pass
+        
+        validated = data
+    return data
 
 def dataLoad():
       
@@ -41,6 +57,8 @@ def dataLoad():
     data = data[data[:,1]>0]
     data = data[data[:,2]>=1]
     data = data[data[:,2]<=4]
+    data = validateData(data)
+    
     #print(data)
     
     #error values by row
@@ -53,6 +71,8 @@ def dataLoad():
             print("invalid growth rate in row {:d}".format(i+1))  
         if not np.any(int(bdata[i,2]) == np.array([1,2,3,4])):
             print("invalid bacteria type in row {:d}".format(i+1))
+        if not len(bdata[i]) == 3:
+            print("data has wrong shape at row {i}, expected N x 3, got {size}")
 
     return data
 #print(data)
