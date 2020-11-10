@@ -58,11 +58,11 @@ def dataPlot(data):
     def growth_data(data):
         '''function for easier reading'''
         bacteria_development = {  # dictionary of dictionaries, every bacteria id has a dictionary of temperatures and growth rates assigned
-            n: [(temperature, growth_rate) for temperature, growth_rate, bacteria in data] for n in {1, 2, 3, 4}
+            n: [(temperature, growth_rate) for temperature, growth_rate, bacteria in data if bacteria == float(n)] for n in {1, 2, 3, 4}
         } 
         
         out = []  # empty list
-
+        print(bacteria_development)
         for n, bacteria_data in bacteria_development.items():  # for every n and its bacteria_data in bacteria_development dictionary
             bacteria_data = sorted(bacteria_data, key=lambda item: item[0])  # sorts by temperature the growth rate
             x_vals, y_vals = zip(*bacteria_data)  # creates a tuple of x and y values by unzipping bacteria_data
