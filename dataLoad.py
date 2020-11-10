@@ -13,15 +13,11 @@ Created on Thu Oct 29 13:49:11 2020
 
 import os
 import numpy as np
-import pandas as pd
+
 os.chdir("/Users/Matt/Desktop/Data files for exercise modules 4")
 
 filename = 'test.txt'
 
-
-import os
-import numpy as np
-import pandas as pd
 
 
 def filecheck():

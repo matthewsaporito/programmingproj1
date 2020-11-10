@@ -5,9 +5,9 @@ Created on Thu Oct 29 15:04:32 2020
 
 @author: sarasterlie
 """
-import dataLoad
-import showMenu
-import numpy as np
+from.dataLoad import *
+from.main_script import showMenu
+
 
 def filterData(prompt, data):
     print("Filters:")
