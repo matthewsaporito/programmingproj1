@@ -11,6 +11,7 @@ from methods.dataStatistics import *
 from methods.dataLoad import *
 from methods.filterData import *
 from methods.utils import showMenu
+import sys
 import numpy as np
 
     
@@ -50,7 +51,7 @@ while True:
             dataPlot(active_data)
             
         elif selection == 5:
-            exit()
+            sys.exit()
             break
         
         else:
