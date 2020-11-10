@@ -7,7 +7,9 @@ Created on Tue Oct 27 18:18:05 2020
 """
 
 from.dataPlot import *
-from.loaddata import *
+from.dataStatistics import *
+from.dataLoad import *
+from.filterData import *
 
 
 def showMenu():
