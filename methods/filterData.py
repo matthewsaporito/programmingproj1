@@ -13,7 +13,7 @@ import numpy as np
 def filterData(data):
     print("Filters:")
     print("1. Filter bacteria")
-    print("2. Filter grwoth rate")
+    print("2. Filter growth rate")
     print("3. No filter")
     selection =int(input("Please enter on of the above options:" ))#takes user input 
 
