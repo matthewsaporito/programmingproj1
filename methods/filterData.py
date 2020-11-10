@@ -14,7 +14,8 @@ def filterData(prompt, data):
     print("Filters:")
     print("1. Filter bacteria")
     print("2. Filter grwoth rate")
-    print("3. Return to main menu")#prints menu for filtering data.
+    print("3. Reset filter")
+    print("4. Return to main menu")#prints menu for filtering data.
         
     while True:
         
@@ -54,8 +55,10 @@ def filterData(prompt, data):
                       
                       return data 
                 
-    
             elif selection == 3:
+                return None
+            
+            elif selection == 4:
                 
                 showMenu()#returns to mainmenu if user input is 3. 
                 

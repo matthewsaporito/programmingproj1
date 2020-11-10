@@ -15,6 +15,7 @@ import numpy as np
 
     
 data = None
+filtered_data = None
 
 
 showMenu()
@@ -28,6 +29,8 @@ while True:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
         showMenu()
         continue
+    
+    active_data = filtered_data or data 
        
     try: 
         if selection == 1:
@@ -35,14 +38,14 @@ while True:
             
         elif selection== 2:
             rawdata = data
-            filterData(data)
+            filtered_data = filterData(data)
           
         elif selection == 3:
             statistic = inputStatistics()
-            displayStatistic(data, statistic)
+            displayStatistic(active_data, statistic)
             
         elif selection == 4:
-            dataPlot(data)
+            dataPlot(active_data)
             
         elif selection == 5:
             exit()
