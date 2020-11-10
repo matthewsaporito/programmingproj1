@@ -3,7 +3,7 @@
 """
 Created on Thu Oct 29 13:49:11 2020
 
-@author: Matt
+@author: Matt Saporito
 """
 
 #Def FilterData
@@ -13,20 +13,30 @@ Created on Thu Oct 29 13:49:11 2020
 
 import os
 import numpy as np
-
+import pandas as pd
 os.chdir("/Users/Matt/Desktop/Data files for exercise modules 4")
 
 filename = 'test.txt'
 
-def dataLoad(filename):
+
+import os
+import numpy as np
+import pandas as pd
+
+
+def filecheck():
     
+    filename = str(input("Please enter The file you whish to load:"))
     try:
-        
-        bdata = np.loadtxt(filename, delimiter=' ')
-        #print(bdata)
-    except Exception as e:
-        print(e)
-        print("please try again")  
+        data = np.loadtxt(filename, delimiter="")
+        return data
+    except OSError:
+        print("The file could not be found. Please Enter an existing file")
+        return filecheck()
+
+def dataLoad():
+      
+    bdata = filecheck()
         
     data = np.array(bdata)
     
@@ -53,7 +63,9 @@ def dataLoad(filename):
     return data
 #print(data)
 
-data = dataLoad(filename)
+# data = dataLoad(filename)
 
+
+        
 
         

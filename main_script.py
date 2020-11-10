@@ -38,7 +38,7 @@ while True:
         
     try:
         if selection == 1:
-            data = dataLoad(filename)
+            data = dataLoad()
             
         elif selection== 2:
             rawdata = data
