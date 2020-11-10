@@ -59,7 +59,6 @@ def dataLoad():
     # cast to float, float, int
     data = [(float(i), float(j), int(k)) for i, j, k in data]
     data = np.array([np.array(item) for item in data])
-    print(data)
     
     data = data[data[:,0]>10]
     data = data[data[:,0]<60]
