@@ -18,6 +18,7 @@ import numpy as np
 data = None
 active_data = None
 active_filter = None
+selection = None
 
 
 #displays main menu.
@@ -25,10 +26,6 @@ active_filter = None
 while True:
     print(active_filter)
     showMenu()
-    
-    
-    
-    selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
 
     if selection in [2, 3, 4] and data is None:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
@@ -37,6 +34,8 @@ while True:
     active_data = active_data if active_data is not None else data
        
     try: 
+        selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
+        
         if selection == 1:
             data = dataLoad()
             
@@ -58,9 +57,10 @@ while True:
         
         else:
             print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")#prints if user input is different than 1-5
-            
+            continue
     except ValueError:
         print("please type a number 1-5")
+        continue
          
     
   
