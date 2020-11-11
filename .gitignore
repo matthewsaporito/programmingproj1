@@ -1,3 +1,4 @@
 
 *.pyc
 methods/*.pyc
+methods/__pycache__/*
