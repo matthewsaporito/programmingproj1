@@ -23,7 +23,9 @@ active_filter = None
 #displays main menu.
 
 while True:
+    print(active_filter)
     showMenu()
+    
     
     
     selection=int(input("Please enter one of the above options:" )) #asks user for input from utils.
@@ -43,13 +45,12 @@ while True:
             active_data, active_filter = filterData(active_data, active_filter)
            
         elif selection == 3:
+            print(active_filter)
             statistic = inputStatistics()
             displayStatistic(active_data, statistic)
-            print(active_filter)
         
         elif selection == 4:
             dataPlot(active_data)
-            print(active_filter)
         
         elif selection == 5:
             sys.exit()

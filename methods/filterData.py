@@ -12,9 +12,6 @@ import numpy as np
 
 def filterData(data, active_filter):
         
-    if active_filter is not None: #will print variable active_filter when it is assinged 
-        print(active_filter)
-        
     print("Filters:")
     print("1. Filter bacteria")
     print("2. Filter growth rate")
@@ -47,7 +44,6 @@ def filterData(data, active_filter):
                 if bacteria == 1 or bacteria == 2 or bacteria == 3 or bacteria == 4: 
                 
                     active_filter = f"Active Filter: Bacteria: {ACTIVE_FILTER[bacteria]}" #assings active_filter variable to description of bacteria filter 
-                    print("Active Filter: Bacteria :", active_filter)
 
                     data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria.
                     active_data = data
@@ -72,7 +68,6 @@ def filterData(data, active_filter):
                 return None, None
             
             active_filter = f"Min. growth rate: {lower} Max.growth rate: {upper}" #assings active_filter variable, to describtion of min and max growthrate. 
-            print("Active Filter: ", active_filter)
             active_data = data
             return active_data, active_filter
                 
