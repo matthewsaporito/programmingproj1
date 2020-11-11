@@ -16,7 +16,7 @@ import numpy as np
 
     
 data = None
-filtered_data = None
+active_data = None
 active_filter = None
 
 
@@ -32,7 +32,7 @@ while True:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
         continue
     
-    active_data = filtered_data if filtered_data is not None else data
+    active_data = active_data if active_data is not None else data
        
     try: 
         if selection == 1:
@@ -40,7 +40,7 @@ while True:
             
         elif selection== 2:
             rawdata = data
-            filtered_data, active_filter = filterData(active_data, active_filter)
+            active_data, active_filter = filterData(active_data, active_filter)
            
         elif selection == 3:
             statistic = inputStatistics()

@@ -50,8 +50,8 @@ def filterData(data, active_filter):
                     print("Active Filter: Bacteria :", active_filter)
 
                     data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria.
-                    
-                    return data, active_filter
+                    active_data = data
+                    return active_data, active_filter
                 
                 else:           
                     print("Please type a number: 1, 2, 3 or 4")#prints message if user input dosn't fufill requriments.
@@ -63,17 +63,18 @@ def filterData(data, active_filter):
                 upper = float(input("Max growth rate:"))
                 #takes min and max growth rate as input 
                 try:
-                    data = data[ data[:,1]<upper and data[:,1]>lower,:]#overwrites data with new filter for growthrate
+                    data = data[ data[:,1] < upper]
+                    data = data[ data[:,1] > lower]#overwrites data with new filter for growthrate
                 except ValueError:
-                      print("Please enter a number as value for the minimun and maixmun growth rate")#prints message if user input dosn't fufill requriments.
-                      
-                      active_filter = f"Min. growth rate: {lower} Max.growth rate: {upper}" #assings active_filter variable, to describtion of min and max growthrate. 
-                      print("Active Filter: ", active_filter)
-                      
-                      return data, active_filter
+                      print("ERROR: Please enter a number as value for the minimun and maixmun growth rate")#prints message if user input dosn't fufill requriments.
             
             elif selection == 3:
                 return None, None
+            
+            active_filter = f"Min. growth rate: {lower} Max.growth rate: {upper}" #assings active_filter variable, to describtion of min and max growthrate. 
+            print("Active Filter: ", active_filter)
+            active_data = data
+            return active_data, active_filter
                 
         except ValueError:
                 print("Please choose an options: 1,2 or 3")#prints message if Valueerror occurs in filter-data menu. 

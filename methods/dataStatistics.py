@@ -64,7 +64,6 @@ def inputStatistics(  # function which asks the user which statistic he/she woul
     Source: Introduction to programming and data processing with Python Exercises for DTU Course 02631–34, 02691–94. Page 64
     Display menu options
     '''
-    
     for i in range(len(options)):
         print("{:d}. {:s}".format(i+1, options[i]))
     # Get a valid menu choice
