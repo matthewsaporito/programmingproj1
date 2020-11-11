@@ -3,7 +3,7 @@
 """
 Created on Thu Oct 29 15:04:32 2020
 
-@author: sarasterlie
+@author: Sara Sterlie
 """
 from .dataLoad import *
 from .utils import showMenu

@@ -7,6 +7,7 @@ Created on Thu Sep 10 13:44:27 2020
 
 import numpy as np
 import statistics as st
+import sys
 
 
 def inputNumber(prompt):
@@ -37,6 +38,7 @@ DESCRIPTIONS = { #Dictionary with description of each statistic
     5 : "The total number of rows in the data.",
     6 : "Mean (average) Growth rate when Temperature is less than 20 degrees.",
     7 : "Mean (average) Growth rate when Temperature is greater than 50 degrees.",
+    8 : "Quit"
 }
     
     
@@ -110,7 +112,9 @@ def dataStatistics(data, statistic):
         # bacteria is not mentioned because it is not important for this calculation 
         hot_growth_rate = [growth_rate for temperature, growth_rate, _ in data if temperature > 50]
         return st.mean(hot_growth_rate)
-
+    
+    elif statistic == 8:
+            sys.exit()
     else:
         print(statistic, "does not exist")
     

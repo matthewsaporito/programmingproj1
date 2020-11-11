@@ -3,7 +3,7 @@
 """
 Created on Tue Oct 27 18:18:05 2020
 
-@author: sarasterlie
+@author: Sara Sterlie and Anna Pekarova
 """
 
 from methods.dataPlot import *
