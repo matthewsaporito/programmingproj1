@@ -12,20 +12,21 @@ import numpy as np
 
 def filterData(data, active_filter):
         
-    if active_filter is not None: 
+    if active_filter is not None: #will print variable active_filter when it is assinged 
         print(active_filter)
         
     print("Filters:")
     print("1. Filter bacteria")
     print("2. Filter growth rate")
     print("3. No filter")
-    selection =int(input("Please enter on of the above options:" ))#takes user input
+    selection =int(input("Please enter on of the above options:" ))
+    #filtering menu asks user to choose growthrate of bacteria filter  
     
     while True:
         
         try:
             
-            if selection == 1:
+            if selection == 1:#if user types 1, programs asks user to choose a bactaria filter. 
                 
                     
                 print("PLease choose a bacteria")
@@ -34,21 +35,21 @@ def filterData(data, active_filter):
                 print("3 Listeria")
                 print("4 Brochothrix thermosphacta")
 
-                bacteria = int(input("please choose an option, 1 to 4:"))#if user input is 1, bacteria-menu is displayed.
+                bacteria = int(input("please choose an option, 1 to 4:"))#user iput assinged to variable bacteria. 
                 
-                ACTIVE_FILTER = {
+                ACTIVE_FILTER = {#Dictionary translating user input into bacteria names. 
                     1 : "Salmonella enterica.",
                     2 : "Bacillus cereus.",
                     3 : "Listeria.",
                     4 : "Brochothrix thermosphacta."
                 }
         
-                if bacteria == 1 or bacteria == 2 or bacteria == 3 or bacteria == 4: #filters for bacteria
+                if bacteria == 1 or bacteria == 2 or bacteria == 3 or bacteria == 4: 
                 
-                    active_filter = ACTIVE_FILTER[bacteria]
+                    active_filter = ACTIVE_FILTER[bacteria] #assings active_filter variable to description of bacteria filter 
                     print("Active Filter: Bacteria :", active_filter)
 
-                    data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria
+                    data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria.
                     
                     return data, active_filter
                 
@@ -66,7 +67,7 @@ def filterData(data, active_filter):
                 except ValueError:
                       print("Please enter a number as value for the minimun and maixmun growth rate")#prints message if user input dosn't fufill requriments.
                       
-                      active_filter = f"Min. growth rate: {lower} Max.growth rate: {upper}"
+                      active_filter = f"Min. growth rate: {lower} Max.growth rate: {upper}" #assings active_filter variable, to describtion of min and max growthrate. 
                       print("Active Filter: ", active_filter)
                       
                       return data, active_filter
