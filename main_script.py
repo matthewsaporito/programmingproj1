@@ -30,7 +30,6 @@ while True:
 
     if selection in [2, 3, 4] and data is None:
         print("Please load data first.")#makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
-        showMenu()
         continue
     
     active_data = filtered_data if filtered_data is not None else data
