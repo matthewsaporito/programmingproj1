@@ -45,10 +45,12 @@ while True:
         elif selection == 3:
             statistic = inputStatistics()
             displayStatistic(active_data, statistic)
-            
+            print(active_filter)
+        
         elif selection == 4:
             dataPlot(active_data)
-            
+            print(active_filter)
+        
         elif selection == 5:
             sys.exit()
             break

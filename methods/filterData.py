@@ -46,7 +46,7 @@ def filterData(data, active_filter):
         
                 if bacteria == 1 or bacteria == 2 or bacteria == 3 or bacteria == 4: 
                 
-                    active_filter = ACTIVE_FILTER[bacteria] #assings active_filter variable to description of bacteria filter 
+                    active_filter = f"Active Filter: Bacteria: {ACTIVE_FILTER[bacteria]}" #assings active_filter variable to description of bacteria filter 
                     print("Active Filter: Bacteria :", active_filter)
 
                     data = data[ data[:,2]== bacteria,:]#overwrites data with new filter for bacteria.
