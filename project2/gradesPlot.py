@@ -7,11 +7,14 @@ Created on Sun Nov 15 15:39:37 2020
 import matplotlib.pyplot as plt
 from methods.utils import computeFinalGrades
 
-def gradesPlot(grades):
-    gradesFinal = gradesFinal if gradesFinal is not None else computeFinalGrades(grades)
+def gradesPlot(grades, gradesFinal = None ):
+    
+    gradesFinal = gradesFinal or computeFinalGrades(grades)
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
+   
+    
    
     def histogram_data(gradesFinal):   
         ''' 
@@ -38,3 +41,5 @@ def gradesPlot(grades):
     
     #  GRADES PER ASSIGNMENT
     #  ------------------------------------------------------------------------
+    
+    
