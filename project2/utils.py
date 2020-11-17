@@ -42,11 +42,12 @@ def getColumms(grades):
 
 def computeFinalGrades(grades): 
    assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]  # gets list of lists of assignment grades
-   gradesFinal = []  # creates an empty list
+   out = []  # creates an empty list
    
    for item in assignmentGrades:  # for each list in list of list
        numberOfAssignments = len([grade for grade in item if grade])  # gets the lenght of of a list in list of lists not counting Nones
        finalGrade = sum(assignmentGrades)/numberOfAssignments  # gets the final grade for each student
-       gradesFinal.append(finalGrade)  # saves the final grade into the empty list
-        
+       out.append(finalGrade)  # saves the final grade into the empty list
+   
+   gradesFinal = np.array(out)     
    return gradesFinal
