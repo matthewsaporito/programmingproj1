@@ -6,9 +6,9 @@ Created on Tue Nov 17 11:51:15 2020
 @author: Sara Sterlie
 """
 
-def cvs_check():
+def csv_check():
     try:
-        cvs_file = [item.strip().split() for item in open(filename, 'r')]
+        csv_file = [item.strip().split() for item in open(csv_file, 'r')]
     except OSError:
         print("The file could not be found. Please Enter an existing file")
         continue
@@ -21,3 +21,5 @@ def cvs_check():
         except csv.Error as e:
             print('The file must be in CVS format')
 return cvs_file, num_of_students
+
+
