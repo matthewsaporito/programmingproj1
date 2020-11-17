@@ -25,8 +25,7 @@ def filecheck():
     data = [item.strip().split(",") for item in open(filename, 'r')]
     return data[1:]
 
-def formatRow(i=None, j=None, k=None, l=None, m=None):
-    
+def formatRow(i=None, j=None, *argv):
     if i == '':
         i = None
     else:
@@ -35,47 +34,39 @@ def formatRow(i=None, j=None, k=None, l=None, m=None):
         j = None
     else:
         j = str(j)  
-    if k == '':
-        k = None
-    else:
+    
+    for arg in argv:
         try:
-            k = float(k)
+            arg = float(arg)
         except:
-            k = None           
-    if l == '':
-        l = None
-    else:
-        try:
-            l = float(l)
-        except:
-            l = None 
-    if m == '':
-        m = None
-    else:
-        try:
-            m = float(m)
-        except:
-            m = None 
-        
+            arg = None  
+            
     #k = None if k == '' else float(k)
-    return (i, j, k, l, m)
+    return (i, j, *argv)
 
 
 def dataLoad():
     # pulls data from filecheck and filters to keep only valid rows from conditions above
     gdata = filecheck()
     data = gdata
-    data = [formatRow(i, j, k, l, m) for i, j, k, l, m in data]
+    data = [formatRow(i, j, *argv) for i, j, *argv in data]
     
     #error values by row, specifying error
-    for i, item in enumerate(data):
-        StudentID, Name, Assignment1, Assignment2, Assignment3 = item 
+    filteredData = []  # creates an empty list
+    for i, row in enumerate(data):
+        
+        StudentID, Name, *grades = row 
+        
         #if any(diff(sort(data, axis=0), axis=0) == 0):
             #print("There is a duplicate student ID in row {:d}".format(i+1))
-        if Assignment1 not in (-3,0,2,4,7,10,12):
-            print("Grade outside range at row {:d}, {}".format(i+1, Assignment1))
-        if Assignment2 not in (-3,0,2,4,7,10,12):
-            print("Grade outside range at row {:d}, {}".format(i+1, Assignment2))
-        if Assignment3 not in (-3,0,2,4,7,10,12):
-            print("Grade outside range at row {:d}, {}".format(i+1, Assignment3))
-    return data
+            
+        for grade in grades:  # line 55 and 63 - 66 and 68 - 70 made by Anna Pekarova
+            try:
+                assert not -3 <= grade <= 12  # tries if the value is in the range
+            except:
+                print("Grade outside range at row {:d}, {}".format(i+1, grades))  
+                break # if not breaks the loop
+        else:
+            filteredData.append(row)  # if the values are within a range in saves the row into the list
+            
+    return filteredData
