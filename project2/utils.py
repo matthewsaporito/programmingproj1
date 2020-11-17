@@ -49,16 +49,16 @@ def getColumms(grades):
 
 def computeFinalGrades(grades):
    try:
-       grades = np.delete(grades, (0), axis=0)  # tries indexing columms as np.array (preffered)
+       grades = np.delete(grades, (0), axis=0)  # tries indexing columms as np.array (preffered), this is also used in the getColumms function
    except TypeError:  # if error ocurs, uses indexing for iterables (slower than above, if used on np array)
         grades = grades[1:]
     
-   assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]
-   gradesFinal = []
+   assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]  # gets list of lists of assignment grades
+   gradesFinal = []  # creates an empty list
    
-   for item in assignmentGrades: 
-       numberOfAssignments = len([grade for grade in item if grade])
-       finalGrade = sum(assignmentGrades)/numberOfAssignments
-       gradesFinal.append(finalGrade)
+   for item in assignmentGrades:  # for each list in list of list
+       numberOfAssignments = len([grade for grade in item if grade])  # gets the lenght of of a list in list of lists not counting Nones
+       finalGrade = sum(assignmentGrades)/numberOfAssignments  # gets the final grade for each student
+       gradesFinal.append(finalGrade)  # saves the final grade into the empty list
         
    return gradesFinal
