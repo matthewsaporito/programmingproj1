@@ -1,11 +1,19 @@
 # -*- coding: utf-8 -*-
 """
+Created on Tue Nov 17 13:04:34 2020
+
+@author: apek
+"""
+
+# -*- coding: utf-8 -*-
+"""
 Created on Mon Nov  9 19:22:30 2020
 
 @author: Anna Pekarova
 """
 
 import numpy as np
+
 
 
 def menu(choices):
@@ -26,14 +34,31 @@ def menu(choices):
 def getColumms(grades):
     try:  # tries indexing columms as np.array (preffered)
         grades = np.delete(grades, (0), axis=0)   # deletes the first row
-        StudentID = grades[:, 0]  # returns the first columm in grades
-        Name = grades[:, 1]  # returns the second columm in grades
-        Assignment1 = grades[:, 2]  # returns the third columm in grades
-        Assignment2 = grades[:, 3]  # returns the third columm in grades
-        Assignment3 = grades[:, 4]  # returns the third columm in grades
+        studentIDs = grades[:, 0]  # returns the first columm in grades
+        names = grades[:, 1]  # returns the second columm in grades
+        assignments1 = grades[:, 2]  # returns the third columm in grades
+        assignments2 = grades[:, 3]  # returns the third columm in grades
+        assignments3 = grades[:, 4]  # returns the third columm in grades
         
     except TypeError:  # if error ocurs, uses indexing for iterables (slower than above, if used on np array)
         grades = grades[1:]
-        StudentID, Name, Assignment1, Assignment2, Assignment3 = zip(*grades) 
+        studentIDs, names, assignments1, assignments2, assignments3 = zip(*grades) 
     
-    return StudentID, Name, Assignment1, Assignment2, Assignment3
+    return studentIDs, names, assignments1, assignments2, assignments3
+
+
+def computeFinalGrades(grades):
+   try:
+       grades = np.delete(grades, (0), axis=0)  # tries indexing columms as np.array (preffered)
+   except TypeError:  # if error ocurs, uses indexing for iterables (slower than above, if used on np array)
+        grades = grades[1:]
+    
+   assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]
+   gradesFinal = []
+   
+   for item in assignmentGrades: 
+       numberOfAssignments = len([grade for grade in item if grade])
+       finalGrade = sum(assignmentGrades)/numberOfAssignments
+       gradesFinal.append(finalGrade)
+        
+   return gradesFinal
