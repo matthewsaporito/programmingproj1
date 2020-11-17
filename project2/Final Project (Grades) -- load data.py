@@ -23,7 +23,6 @@ def filecheck():
     #checks that user file exists loads as 'data'
     filename = str(input("Please enter The file you whish to load:"))
     data = [item.strip().split(",") for item in open(filename, 'r')]
-    #print(data)
     return data[1:]
 
 def validateRowLen(data):
@@ -40,7 +39,7 @@ def validateRowLen(data):
             pass
     return validated
 
-def formatRow(i, j, k, l, m):
+def formatRow(i=None, j=None, k=None, l=None, m=None):
     
     if i == '':
         i = None
@@ -80,24 +79,17 @@ def dataLoad():
     # pulls data from filecheck and filters to keep only valid rows from conditions above
     gdata = filecheck()
     data = gdata
-    data = [formatRow(*item) for item in data]
     data = [formatRow(i, j, k, l, m) for i, j, k, l, m in data]
-    #data = [(str(i), str(j), float(k), float(l), float(m)) for i, j, k, l, m in data]
-    data = np.array([np.array(item) for item in data])
-    
-    #MUST FIND DUPLICATES IN THE SAME COLUMN
-    #GRADES IN DATA SET MUST BE ONE OF 7 OPTIONS
-
-     #data[data[:,2] not in (-3,0,2,4,7,10,12)]
-
-    print(data)
     
     #error values by row, specifying error
     for i, item in enumerate(data):
-        #StudentID, Name, Assignment1, Assignment2, Assignment3 = item 
-        #StudentID, Name, Assignment1, Assignment2, Assignment3 = str(StudentID), str(Name), float(Assignment1), int(Assignment2), int(Assignment3)
-        #if np.any(np.diff(np.sort(data, axis=0), axis=0) == 0):
+        StudentID, Name, Assignment1, Assignment2, Assignment3 = item 
+        #if any(diff(sort(data, axis=0), axis=0) == 0):
             #print("There is a duplicate student ID in row {:d}".format(i+1))
-        if data[data[:,2] not in (-3,0,2,4,7,10,12)]:
-            print("Grade outside range at row {:d}".format(i+1))
+        if Assignment1 not in (-3,0,2,4,7,10,12):
+            print("Grade outside range at row {:d}, {}".format(i+1, Assignment1))
+        if Assignment2 not in (-3,0,2,4,7,10,12):
+            print("Grade outside range at row {:d}, {}".format(i+1, Assignment2))
+        if Assignment3 not in (-3,0,2,4,7,10,12):
+            print("Grade outside range at row {:d}, {}".format(i+1, Assignment3))
     return data
