@@ -30,15 +30,16 @@ def menu(choices):
         else:
             print("Invalid Choice. Please choose one out of", range(1, len(choices)))
             
+'''
+def getColumms(filteredData):
+    filteredData = sorted(filteredData, key = lambda filteredData_entry: filteredData_entry[0])  # sorts the grades by the first columm 
+    studentIDs, names, *args = zip(*filteredData)
+    return studentIDs, names, *args
+'''
 
-def getColumms(grades):
-    grades = sorted(grades, key = lambda grades_entry: grades_entry[0])  # sorts the grades by the first columm 
-    studentIDs, names, assignments1, assignments2, assignments3 = zip(*grades)
-    return studentIDs, names, assignments1, assignments2, assignments3
 
-
-def computeFinalGrades(grades): 
-   assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]  # gets list of lists of assignment grades
+def computeFinalGrades(filteredData): 
+   assignmentGrades = [[*args] for studentIDs, names, *args in filteredData]  # gets list of lists of assignment grades
    out = []  # creates an empty list
    
    for item in assignmentGrades:  # for each list in list of list
