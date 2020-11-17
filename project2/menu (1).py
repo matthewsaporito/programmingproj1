@@ -30,7 +30,7 @@ while True:
         elif selection == 3:
             gradesPlot()
         
-        elif selection == 4:
+        elif selection == 4: #change
             getColumms()
  
         elif selection == 5:

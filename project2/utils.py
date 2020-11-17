@@ -32,11 +32,8 @@ def menu(choices):
             
 
 def getColumms(grades):
-    studentIDs = grades[:, 0]  # returns the first columm in grades
-    names = grades[:, 1]  # returns the second columm in grades
-    assignments1 = grades[:, 2]  # returns the third columm in grades
-    assignments2 = grades[:, 3]  # returns the third columm in grades
-    assignments3 = grades[:, 4]  # returns the third columm in grades
+    grades = sorted(grades, key = lambda grades_entry: grades_entry[0])  # sorts the grades by the first columm 
+    studentIDs, names, assignments1, assignments2, assignments3 = zip(*grades)
     return studentIDs, names, assignments1, assignments2, assignments3
 
 
@@ -49,5 +46,5 @@ def computeFinalGrades(grades):
        finalGrade = sum(assignmentGrades)/numberOfAssignments  # gets the final grade for each student
        out.append(finalGrade)  # saves the final grade into the empty list
    
-   gradesFinal = np.array(out)  # changes empty list into a numpy array (I prefer to work with iterables, that is why I converted into a list in the first place)
+   gradesFinal = np.array(out)  # changes empty list into a numpy array (I prefer to work with iterables
    return gradesFinal
