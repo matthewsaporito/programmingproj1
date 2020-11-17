@@ -32,27 +32,15 @@ def menu(choices):
             
 
 def getColumms(grades):
-    try:  # tries indexing columms as np.array (preffered)
-        grades = np.delete(grades, (0), axis=0)   # deletes the first row
-        studentIDs = grades[:, 0]  # returns the first columm in grades
-        names = grades[:, 1]  # returns the second columm in grades
-        assignments1 = grades[:, 2]  # returns the third columm in grades
-        assignments2 = grades[:, 3]  # returns the third columm in grades
-        assignments3 = grades[:, 4]  # returns the third columm in grades
-        
-    except TypeError:  # if error ocurs, uses indexing for iterables (slower than above, if used on np array)
-        grades = grades[1:]
-        studentIDs, names, assignments1, assignments2, assignments3 = zip(*grades) 
-    
+    studentIDs = grades[:, 0]  # returns the first columm in grades
+    names = grades[:, 1]  # returns the second columm in grades
+    assignments1 = grades[:, 2]  # returns the third columm in grades
+    assignments2 = grades[:, 3]  # returns the third columm in grades
+    assignments3 = grades[:, 4]  # returns the third columm in grades
     return studentIDs, names, assignments1, assignments2, assignments3
 
 
-def computeFinalGrades(grades):
-   try:
-       grades = np.delete(grades, (0), axis=0)  # tries indexing columms as np.array (preffered), this is also used in the getColumms function
-   except TypeError:  # if error ocurs, uses indexing for iterables (slower than above, if used on np array)
-        grades = grades[1:]
-    
+def computeFinalGrades(grades): 
    assignmentGrades = [[assignments1, assignments2, assignments3] for studentIDs, names, assignments1, assignments2, assignments3 in grades]  # gets list of lists of assignment grades
    gradesFinal = []  # creates an empty list
    
