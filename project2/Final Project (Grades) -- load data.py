@@ -25,20 +25,6 @@ def filecheck():
     data = [item.strip().split(",") for item in open(filename, 'r')]
     return data[1:]
 
-def validateRowLen(data):
-    #checks that data file has 5 columns
-    validated = []
-    for i, item in enumerate(data):
-        try:
-            
-            size = len(item)
-            assert size == 5
-            validated += [item]
-            
-        except AssertionError as e:
-            pass
-    return validated
-
 def formatRow(i=None, j=None, k=None, l=None, m=None):
     
     if i == '':
