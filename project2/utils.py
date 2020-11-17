@@ -49,5 +49,5 @@ def computeFinalGrades(grades):
        finalGrade = sum(assignmentGrades)/numberOfAssignments  # gets the final grade for each student
        out.append(finalGrade)  # saves the final grade into the empty list
    
-   gradesFinal = np.array(out)     
+   gradesFinal = np.array(out)  # changes empty list into a numpy array (I prefer to work with iterables, that is why I converted into a list in the first place)
    return gradesFinal
