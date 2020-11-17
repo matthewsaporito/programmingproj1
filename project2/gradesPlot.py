@@ -7,9 +7,9 @@ Created on Sun Nov 15 15:39:37 2020
 import matplotlib.pyplot as plt
 from methods.utils import computeFinalGrades
 
-def gradesPlot(grades, gradesFinal = None ):
+def gradesPlot(filteredData, gradesFinal = None ):
     
-    gradesFinal = gradesFinal or computeFinalGrades(grades)
+    gradesFinal = gradesFinal or computeFinalGrades(filteredData)
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
