@@ -8,7 +8,6 @@ Created on Mon Nov  9 19:22:30 2020
 import numpy as np
 
 
-
 def menu(choices):
     
     for i, choice in enumerate(choices):
