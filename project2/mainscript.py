@@ -9,7 +9,7 @@ Created on Sun Nov 15 15:52:51 2020
 
 
 
-from filecheck import *
+#from filecheck import *
 from gradesPlot import *
 import pandas as pd
 import numpy as np

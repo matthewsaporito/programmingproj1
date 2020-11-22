@@ -10,6 +10,7 @@ Created on Tue Nov 17 16:46:59 2020
 import os
 import numpy as np
 import pandas as pd
+from pandas import isnull
 os.chdir('/Users/Matt/Desktop/')
 
 #filename = 'testgrades(witherrors).csv'
@@ -62,8 +63,9 @@ def filterData():
                 ErrorMatrix[rownum] = 0
         rownum+=1
         
-    data2 = data.values.tolist()
-    ddata=data
-    print(ddata)
-    return data2
+    data = data.values.tolist()
+    #ddata=data
+    #print(ddata)
+    return data
     
+
