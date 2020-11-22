@@ -45,6 +45,7 @@ def computeFinalGrades(data):
     Author: Anna Pekarova
     """
     assignmentGrades = [assignments for studentID, name, *assignments in data]  # gets list of lists of assignment grades
+    
     out1 = []  # creates an empty list
     
     for item in assignmentGrades:  # for each list in list of list
@@ -56,13 +57,14 @@ def computeFinalGrades(data):
     for item in out1:  # for each list in the list out1
        if -3 in item:  # if there is -3 in the list in the list
            finalGrade = -3  # then the final grade is -3
-           out.append(finalGrade)  # adds this grade to the empty list
+
        else:
            sortedList = sorted(item)  # sorts the numbers in the list in the list from the smallest up
            trimmedList = sortedList[1:]  # cuts of the smallest one
            numberOfAssignments = len(trimmedList)  # gets the lenght of of a list in the list
            finalGrade = sum(trimmedList)/numberOfAssignments  # gets the final grade for each student
-           out.append(finalGrade)  # saves the final grade into the empty list
+         
+       out.append(finalGrade) # adds this grade to the empty list
    
     gradesFinal = np.array(out)  # changes the list into a numpy array
     return gradesFinal
