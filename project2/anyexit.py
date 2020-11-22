@@ -5,8 +5,7 @@ Created on Tue Nov 17 08:59:45 2020
 
 @author: Sara Sterlie
 """
-
-def any_exit():
-    a = input('Press a key to exit')
-    if a:
-        exit(0)
+import sys
+def anykey():
+    a = input('Press a key to exit:')
+    return a
