@@ -17,8 +17,20 @@ os.chdir('/Users/Matt/Desktop/')
 def filecheck():
     #checks that user file exists loads as 'data'
     filename = str(input("Please enter The file you wish to load:"))
-    data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
-    return data[1:]
+    
+    try:
+        # data = np.loadtxt(filename, delimiter=" ")
+        data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
+        return data[1:]
+    except OSError:
+        print("The file could not be found. Please Enter an existing file")
+        return filecheck()
+    except Exception as e:
+        print(e)
+        return filecheck()
+    
+    #data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
+    #return data[1:]
 
 
 def dataLoad():
@@ -33,16 +45,15 @@ def filterData():
 
     gdata = dataLoad()
     dfcol1 = pd.DataFrame(gdata, columns =[0])
-    duplicaterow = dfcol1[dfcol1.duplicated()]
+    duplicaterow = dfcol1[dfcol1.duplicated()]    
     print("\nThe following rows contain duplicate student IDs, the row with the first duplicate occurence will be kept:\n", "\n", duplicaterow.to_string(header = False))
     data = gdata[gdata[0].notnull()].drop_duplicates(subset=0, keep='first') #pandas code from https://stackoverflow.com/questions/45655080/remove-duplicates-using-pandas-python
-   
-
+        
+        
     colnumber=len(list(gdata.columns))
     datacols = gdata.iloc[:,range(2,colnumber)]
     rownumber = len(gdata.index)
     ErrorMatrix = pd.DataFrame(np.zeros((rownumber,colnumber))) # https://python-forum.io/Thread-Iterating-over-pandas-df-to-check-for-values-out-of-range?page=2
-    
     rownum =0
     for rownumber in datacols.values:
         for i in rownumber:
@@ -51,6 +62,8 @@ def filterData():
                 ErrorMatrix[rownum] = 0
         rownum+=1
         
-    data = data.values.tolist()
-    return data
+    data2 = data.values.tolist()
+    ddata=data
+    print(ddata)
+    return data2
     
