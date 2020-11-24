@@ -19,7 +19,7 @@ def roundGrades():
 
     for g, (studentID, name, *grades) in enumerate(data):
         for k, i in enumerate(grades):
-            if i >= 11:
+            if (i 12=> and i >= 11):
                 data[g][k + 2] = 12
             elif (i < 11 and i >= 8.5):
                 data[g][k + 2] = 10
@@ -31,10 +31,10 @@ def roundGrades():
                 data[g][k + 2] = 2
             elif (i < 1 and i >= -1.5):
                 data[g][k + 2] = 0
-            elif (i <-1.5):
+            elif (i <-1.5 and >= -3):
                 data[g][k + 2] = -3
             else:
-                data[g][k + 2] = "Nan"
+                data[g][k + 2] = NA
              
                 
     return data
