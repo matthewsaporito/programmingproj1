@@ -34,9 +34,9 @@ def filecheck():
     #return data[1:]
 
 
-def dataLoad():
+def dataLoad(gdata):
     # pulls data from filecheck and filters to keep only valid rows from conditions above
-    gdata = filecheck()
+    gdata = gdata or filecheck()
     lll=list(gdata.columns)
     gdata[lll[2:]] = pd.to_numeric(gdata[lll[2:]].stack(), errors='coerce').unstack()#data formatting from https://stackoverflow.com/questions/36814100/pandas-to-numeric-for-multiple-columns
     return gdata
