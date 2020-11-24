@@ -11,8 +11,8 @@ import math as m
 import pandas as pd
 from pandas import isnull
 from pandas import NA
-from .utils import roundGrades
-from .utils import computeFinalGrades
+from .utils import *
+
 
 
 os.chdir('/Users/Matt/Desktop/')

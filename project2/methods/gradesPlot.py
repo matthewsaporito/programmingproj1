@@ -71,11 +71,11 @@ def gradesPlot(data, gradesFinal = None ):
          x_vals, y_vals = zip(*out)
          return x_vals, y_vals
      
-     
-     plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
-     plt.title('Grades per assignment')  # title
-     plt.xlabel('Assignments')  # label of x axis
-     plt.ylabel('Grades')  # label of y axis
+    x_vals,y_vals = scatterData(data) 
+    plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
+    plt.title('Grades per assignment')  # title
+    plt.xlabel('Assignments')  # label of x axis
+    plt.ylabel('Grades')  # label of y axis
      
          
     
