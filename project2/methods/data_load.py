@@ -59,7 +59,7 @@ def filterData():
     for rownumber in datacols.values:
         for i in rownumber:
             if (i < -3 or i > 12):
-                print("We found a grade outside range at row number {}, the grade is {}.".format(rownum, i))
+                print("We found a grade outside range at row number {}, the grade is {}.".format(rownum+2, i))
                 ErrorMatrix[rownum] = 0
         rownum+=1
         
