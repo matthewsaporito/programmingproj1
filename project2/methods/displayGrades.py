@@ -11,7 +11,7 @@ import math as m
 import pandas as pd
 from pandas import isnull
 from pandas import NA
-from .roundgrade8 import roundGrades
+from .utils import roundGrades
 from .utils import computeFinalGrades
 
 

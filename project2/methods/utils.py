@@ -16,7 +16,6 @@ import numpy as np
 import math as m
 from pandas import isnull
 from pandas import NA
-from .roundgrade8 import roundGrade
 import pandas as pd
 from pandas import isnull
 from .data_load import filterData
@@ -81,7 +80,7 @@ def computeFinalGrades(data):
     
     for item in assignmentGrades:  # for each list in list of list
        Grades1 = [grade for grade in item if isnull(grade) == False]  # get rid of nans
-       Grades = roundGrade(Grades1)[0]  # calls the round function for each row
+       Grades = roundGrades(Grades1)[0]  # calls the round function for each row
        out1.append(Grades)  # adds the values to the list
     
     out = []  # creates a new empty list
