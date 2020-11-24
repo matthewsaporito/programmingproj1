@@ -50,7 +50,7 @@ def computeFinalGrades(data):
     
     for item in assignmentGrades:  # for each list in list of list
        Grades1 = [grade for grade in item if isnull(grade) == False]  # get rid of nans
-       Grades = roundGrade(Grades1)  # calls the round function for each row
+       Grades = roundGrade(Grades1)[0]  # calls the round function for each row
        out1.append(Grades)  # adds the values to the list
     
     out = []  # creates a new empty list

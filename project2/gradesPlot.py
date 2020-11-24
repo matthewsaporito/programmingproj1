@@ -50,7 +50,7 @@ def gradesPlot(data, gradesFinal = None ):
          assignmentGrades = [assignments for studentID, name, *assignments in data]
          out1 = []
          for item in assignmentGrades:
-             roundedGrades = roundGrades(assignmentGrades)
+             roundedGrades = roundGrades(assignmentGrades)[0]
              out1.append(roundedGrades)
          
          yvals = [item for sublist in out1 for item in sublist]  # used code from: https://stackoverflow.com/a/952952
