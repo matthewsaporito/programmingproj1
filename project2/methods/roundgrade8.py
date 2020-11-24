@@ -34,7 +34,7 @@ def roundGrades():
             elif (i <-1.5):
                 data[g][k + 2] = -3
             else:
-                data[g][k + 2] = "Nan"
+                data[g][k + 2] = NA
              
                 
     return data
