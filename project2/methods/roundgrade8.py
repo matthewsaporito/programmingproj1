@@ -15,11 +15,11 @@ from data_load import filterData
 
 def roundGrades():
     
-    data = filterData()
+    data = filterData(log=False)
 
     for g, (studentID, name, *grades) in enumerate(data):
         for k, i in enumerate(grades):
-            if (i 12=> and i >= 11):
+            if (i <= 12 and i >= 11):
                 data[g][k + 2] = 12
             elif (i < 11 and i >= 8.5):
                 data[g][k + 2] = 10
@@ -31,11 +31,12 @@ def roundGrades():
                 data[g][k + 2] = 2
             elif (i < 1 and i >= -1.5):
                 data[g][k + 2] = 0
-            elif (i <-1.5 and >= -3):
+            elif (i <-1.5 and i >= -3):
                 data[g][k + 2] = -3
             else:
                 data[g][k + 2] = NA
              
-                
-    return data
+                data = np.array(data)   
+                bdata = data[:,2:]
+    return bdata
 
