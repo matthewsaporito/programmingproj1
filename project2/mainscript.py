@@ -10,10 +10,10 @@ Created on Sun Nov 15 15:52:51 2020
 
 
 #from filecheck import *
-from gradesPlot import *
+from methods.gradesPlot import *
 import pandas as pd
 import numpy as np
-from utils import *
+from methods.utils import *
 
 data = None
 selection = None

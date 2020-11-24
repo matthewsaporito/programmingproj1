@@ -5,8 +5,8 @@ Created on Sun Nov 15 15:39:37 2020
 @author: Anna Pekarova
 """
 import matplotlib.pyplot as plt
-from methods.utils import computeFinalGrades
-from roundgrade8 import roundGrades
+from .utils import computeFinalGrades
+from .roundgrade8 import roundGrades
 from pandas import NA
 from pandas import isnull
 
