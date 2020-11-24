@@ -36,8 +36,8 @@ def roundGrades():
             else:
                 data[g][k + 2] = NA
                 
-                data = np.array(data)   
-                bdata = data[:,2:]
-                bdata.tolist()
+            data = np.array(data)   
+            bdata = data[:,2:]
+            bdata.tolist()
     return bdata, data
 
