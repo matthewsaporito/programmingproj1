@@ -11,7 +11,7 @@ import os
 import numpy as np
 import pandas as pd
 from pandas import isnull
-#os.chdir('/Users/Matt/Desktop/')
+os.chdir('/Users/Matt/Desktop/')
 
 #filename = 'testgrades(witherrors).csv'
 
@@ -32,15 +32,14 @@ def filecheck():
 
 
 def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in claculations
-    gdata = gdata or filecheck()
+    gdata = filecheck()
     lll=list(gdata.columns) #gets list of column numbers
     gdata[lll[2:]] = pd.to_numeric(gdata[lll[2:]].stack(), errors='coerce').unstack()#data formatting from https://stackoverflow.com/questions/36814100/pandas-to-numeric-for-multiple-columns
     return gdata
 
 
-def filterData(gdata=None, log=True):
-    
-    gdata = gdata or dataLoad()
+def filterData(gdata, log=True):
+     
     
     dfcol1 = pd.DataFrame(gdata, columns =[0])
     duplicaterow = dfcol1[dfcol1.duplicated()]  

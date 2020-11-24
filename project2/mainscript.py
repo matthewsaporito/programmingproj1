@@ -15,7 +15,7 @@ from methods.menu import *
 from methods.utils import *
 from methods.displayGrades import *
 
-
+os.chdir('/Users/Matt/Desktop/')
 
 data = None
 selection = None
@@ -25,7 +25,7 @@ gdata = None
 print("Hello! This is a program for grading student")
 
 #data = filecheck()
-#data = dataLoad()
+data = dataLoad(data)
 
 #print('f{The number of student is:} {len(data.index}')
 #print('f{The number of asingments are:} {count(data.iloc[:,range(2,colnumber)])}')
@@ -43,13 +43,12 @@ while True:
         selection = int(input("Please enter one of the above options:" ))
 
         if selection == 1:
-            data = loaddata()
+            data = dataLoad()
         elif selection == 2:
-            gdata = dataLoad()
-            filterData()
+            data = filterData(data)
         elif selection == 3:
-            gdata = roundGrades(filterData)
-            finalGrades = computeFinalGrades(filterData)
+            data = roundGrades(data)
+            finalGrades = computeFinalGrades(data)
             gradesPlot(data, finalGrades)
         elif selection == 4:
             displayGrades()
