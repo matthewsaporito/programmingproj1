@@ -17,13 +17,13 @@ def gradesPlot(data, finalGrades):
    
     
    
-    def histogramData(gradesFinal):   
+    def histogramData(finalGrades):   
         ''' 
         I created this function for easier reading, and used some structure I used before: dataPlot from Project 1 made by Anna Pekarova, I also used counter from letter_frequency assignment made by Anna Pekarova
         '''
-        counter = {grade: 0 for grade in gradesFinal} # create a counter {grade: zero} for each grade in gradesFinal
+        counter = {grade: 0 for grade in finalGrades} # create a counter {grade: zero} for each grade in gradesFinal
     
-        for grade in gradesFinal:
+        for grade in finalGrades:
             if grade in counter:  # is grade in counter.keys()
                 counter[grade] += 1 #if yes add 1 in counter for the key(grade)
     
