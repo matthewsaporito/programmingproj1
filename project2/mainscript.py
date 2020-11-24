@@ -7,53 +7,58 @@ Created on Sun Nov 15 15:52:51 2020
 """
 
 
-
-
-#from filecheck import *
-from methods.gradesPlot import *
+#from methods.gradesPlot import *
 import pandas as pd
 import numpy as np
+from methods.data_load import *
+from methods.menu import *
 from methods.utils import *
+from methods.displayGrades import *
+
+
 
 data = None
 selection = None
 gdata = None
 
+
+print("Hello! This is a program for grading student")
+
+data = filecheck()
+data = dataLoad()
+
+#print('f{The number of student is:} {len(data.index}')
+#print('f{The number of asingments are:} {count(data.iloc[:,range(2,colnumber)])}')
+
+
+#data = gdata
+
 while True:
-    print("Hello! This is a program for grading student")
-
-    filecheck(data)
-    dataload(gdata)
-
-    print('f{The number of student is:} {len(gdata.index}')
-    print('f{The number of asingments are:} {count(gdata.iloc[:,range(2,colnumber)])}')
-
-    choices = ['Load new data', 'Check for data errors', 'Generate plots', 'Display list of grades','Quit program']
-
-    menu(choices)
-
-    data = gdata
+    showMenu()
 
     if selection in [1, 2, 3, 4] and data is None:
         print('Please load a CSV-file first.') #Makes sure data is loaded. if not approaching option 2,3 or 4 is not allowed.
         continue
+    try:
+        selection = int(input("Please enter one of the above options:" ))
 
-        try:
-            selection = menu(choices)
-            if selection == 1:
-                data = loaddata()
-            elif selection == 2:
-                filterData(data)
-            elif selection == 3:
-                gradesPlot()
-            elif selection == 4:
-                getColumms()
-            elif selection == 5:
-                
-                    sys.exit(0)
-            else:
-                print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")#prints if user input is different than 1-5
-            
-        except ValueError:
-            print("please type a number 1-5")
-            continue
+        if selection == 1:
+            data = loaddata()
+        elif selection == 2:
+            gdata = dataLoad()
+            filterData()
+        elif selection == 3:
+            gdata = roundGrades(filterData)
+            finalGrades = computeFinalGrades(filterData)
+            gradesPlot(data, finalGrades)
+        elif selection == 4:
+            displayGrades()
+        elif selection == 5:
+            anyexit()
+        else:
+            print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")#prints if user input is different than 1-5
+
+    except ValueError:
+       print("please type a number 1-5")
+       continue
+
