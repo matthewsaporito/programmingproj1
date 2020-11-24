@@ -19,15 +19,17 @@ from methods.displayGrades import *
 
 data = None
 selection = None
+gdata = None
 
 
 print("Hello! This is a program for grading student")
 
-data = filecheck()
-data = dataLoad(data)
+#data = filecheck()
+#data = dataLoad()
 
-#print('The number of students is:{}'.len(data.index))
-#print('The number of asingments are:{}'.count(data.iloc[:,range(2,colnumber)]))
+#print('f{The number of student is:} {len(data.index}')
+#print('f{The number of asingments are:} {count(data.iloc[:,range(2,colnumber)])}')
+
 
 #data = gdata
 
@@ -41,13 +43,13 @@ while True:
         selection = int(input("Please enter one of the above options:" ))
 
         if selection == 1:
-            data = filecheck()
-            data = dataLoad(data)
+            data = loaddata()
         elif selection == 2:
-            data = filterData(data)
+            gdata = dataLoad()
+            filterData()
         elif selection == 3:
-            data = roundGrades(data)
-            finalGrades = computeFinalGrades(data)
+            gdata = roundGrades(filterData)
+            finalGrades = computeFinalGrades(filterData)
             gradesPlot(data, finalGrades)
         elif selection == 4:
             displayGrades()

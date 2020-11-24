@@ -11,7 +11,7 @@ import os
 import numpy as np
 import pandas as pd
 from pandas import isnull
-#os.chdir('/Users/Matt/Desktop/')
+os.chdir('/Users/Matt/Desktop/')
 
 #filename = 'testgrades(witherrors).csv'
 
@@ -21,23 +21,19 @@ def filecheck():
     
     try:
         # data = np.loadtxt(filename, delimiter=" ")
-        data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
-        return data[1:]
+        data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #converts csv file to pandas dataframe
+        return data[1:]#returns data excluding headers
     except OSError:
         print("The file could not be found. Please Enter an existing file")
         return filecheck()
     except Exception as e:
         print(e)
         return filecheck()
-    
-    #data = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
-    #return data[1:]
 
 
-def dataLoad(gdata):
-    # pulls data from filecheck and filters to keep only valid rows from conditions above
+def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in claculations
     gdata = gdata or filecheck()
-    lll=list(gdata.columns)
+    lll=list(gdata.columns) #gets list of column numbers
     gdata[lll[2:]] = pd.to_numeric(gdata[lll[2:]].stack(), errors='coerce').unstack()#data formatting from https://stackoverflow.com/questions/36814100/pandas-to-numeric-for-multiple-columns
     return gdata
 
