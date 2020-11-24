@@ -36,7 +36,7 @@ def menu(choices):
         else:
             print("Invalid Choice. Please choose one out of", range(1, len(choices)))
             
-def roundGrades(data = None):
+def roundGrades(data):
     
     data = data or filterData(log = False)
 
@@ -86,12 +86,13 @@ def computeFinalGrades(data):
     for item in out1:  # for each list in the list out1
        if -3 in item:  # if there is -3 in the list in the list
            finalGrade = -3  # then the final grade is -3
-
+           
        else:
            sortedList = sorted(item)  # sorts the numbers in the list in the list from the smallest up
-           trimmedList = sortedList[1:]  # cuts of the smallest one
-           numberOfAssignments = len(trimmedList)  # gets the lenght of of a list in the list
-           finalGrade = sum(trimmedList)/numberOfAssignments  # gets the final grade for each student
+           if len(sortedList) > 1:  # if 
+               sortedList = sortedList[1:]  # cuts of the smallest one
+           numberOfAssignments = len(sortedList)  # gets the lenght of of a list in the list
+           finalGrade = sum(sortedList)/numberOfAssignments  # gets the final grade for each student
          
        out.append(finalGrade) # adds this grade to the empty list
    

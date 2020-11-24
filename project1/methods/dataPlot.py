@@ -7,6 +7,7 @@ Created on Thu Oct 29 10:00:08 2020
 
 import numpy as np
 import matplotlib.pyplot as plt
+import statistics as st
 
 
 

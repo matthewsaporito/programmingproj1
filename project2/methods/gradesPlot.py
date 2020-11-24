@@ -5,11 +5,11 @@ Created on Sun Nov 15 15:39:37 2020
 @author: Anna Pekarova
 """
 import matplotlib.pyplot as plt
-from .utils import computeFinalGrades
-from .utils import roundGrades
 from pandas import NA
 from pandas import isnull
 from random import random
+import numpy as np
+
 
 def gradesPlot(data, finalGrades):
     
@@ -46,34 +46,40 @@ def gradesPlot(data, finalGrades):
     
     
     def scatterData(data):
-         assignmentGrades = [assignments for studentID, name, *assignments in data]
-         out1 = []
-         for item in assignmentGrades:
-             roundedGrades = roundGrades(assignmentGrades)[0]
-             out1.append(roundedGrades)
+         assignmentGrades = [assignments for studentID, name, *assignments in data]  # gets list of lists of grades = gets rid of studentIDs and names
          
-         yvals = [item for sublist in out1 for item in sublist]  # used code from: https://stackoverflow.com/a/952952
-         outx = []
+         yvals = [item for sublist in assignmentGrades for item in sublist]  # used code from: https://stackoverflow.com/a/952952, from a list of lists makes just a list
+         outx = []  # cretes an empty list
          
-         for sublist in out1:
-             x = list(range(1,len(sublist)+1))
-             outx.append(x)
+         for sublist in assignmentGrades:  # for a list in the list of lists named assignmentGrades
+             x = list(range(1,len(sublist)+1))  # cretes a list filled with indexes + 1 of values in list, corresponds to number of assignments
+             outx.append(x)  # saves these lists into the empty list
              
-         xvals = [item for sublist in outx for item in sublist]  # used code from: https://stackoverflow.com/a/952952
-         denan = list(zip(xvals,yvals))
-         denan = [(xval, yval) for xval, yval in denan if isnull(yval) == False]
+         xvals = [item for sublist in outx for item in sublist]  # used code from: https://stackoverflow.com/a/952952, from a list of lists makes just a list
+         vals = list(zip(xvals,yvals))  # makes list of tuples consisting of x and y values
+         vals = [(xval, yval) for xval, yval in vals if isnull(yval) == False]  # deletes a tuple from the list if there is NA in the tuple
          
-         x_vals, y_vals = zip(*denan)
-         return x_vals, y_vals
+         
+         dictionary = {xval: [] for xval, yval in vals}   # creates
+         for xval, yval in vals:
+             dictionary[xval].append(yval)
+        
+         dictionaryAvg = {key: sum(value)/len(value) for key, value in dictionary.items()} 
+         x_values, y_values = zip(*dictionaryAvg.items())    
+        
+         x_vals, y_vals = zip(*vals)  # uzips the list of tuples into two lists
+         
+         return x_vals, y_vals, x_values, y_values
      
-    x_vals,y_vals = scatterData(data) 
-    x_vals = [item + 0.1*random()-0.1 for item in x_vals]
-    y_vals = [item + 0.1*random()-0.1 for item in y_vals]
+    x_vals,y_vals, x_values, y_values = scatterData(data)  # calls the above function to get x and y valus
+    x_vals = [item + 0.1*random()-0.1 for item in x_vals]  # adds a random number between -0.1 and 0.1 to each x value
+    y_vals = [item + 0.1*random()-0.1 for item in y_vals]  # adds a random number between -0.1 and 0.1 to each y value
     plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
     plt.title('Grades per assignment')  # title
     plt.xlabel('Assignments')  # label of x axis
     plt.ylabel('Grades')  # label of y axis
-    plt.scatter(x_vals,y_vals)
+    plt.scatter(x_vals,y_vals)  # plots the values as a scatter
+    plt.plot(x_values, y_values)
     plt.show()
     
         
