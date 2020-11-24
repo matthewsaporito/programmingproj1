@@ -5,22 +5,47 @@ Created on Tue Nov 24 13:11:15 2020
 
 @author: Matt
 """
-
+import os
 import numpy as np
 import math as m
 import pandas as pd
 from pandas import isnull
 from pandas import NA
-from data_load import filterData
-from computeFinalGrade import computeFinalGrade
+from roundgrade8 import roundGrades
+
+
+os.chdir('/Users/Matt/Desktop/')
 
 def displayGrades():
     
-    data = filterData(log=False)
-    finalgrade = computeFinalGrade()
+    filename = str(input("Please enter The file you wish to load:"))
     
-    Framedata = pd.DataFrame(data)
-    Framefinalgrade = pd.DataFrame(finalgrade)
+    finalgrade = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
+
+    data = roundGrades()[1]
+    db = pd.DataFrame(data)
     
+    df = pd.concat([db,finalgrade],axis=1)
+
+    def color_negative_red(val):
+        color = 'red' if val < 0 else 'black'
+        return 'color: %s' % color
+
+        s= df.style.applymap(color_negative_red)
+    
+        print(s)
+    
+    return s
+
+    
+
+    #print(Framefinalgrade)
+    
+
+    
+    # Sort by ascending student name
+    #df.sort('student')
+    # reverse ascending
+    #df.sort('student', ascending=False)
     
     
