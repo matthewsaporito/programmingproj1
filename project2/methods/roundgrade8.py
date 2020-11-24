@@ -38,6 +38,6 @@ def roundGrades():
                 
             data = np.array(data)   
             bdata = data[:,2:]
-            bdata.tolist()
+            bdata = bdata.tolist()
     return bdata, data
 
