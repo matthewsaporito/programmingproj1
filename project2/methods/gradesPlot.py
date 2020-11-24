@@ -9,23 +9,22 @@ from .utils import computeFinalGrades
 from .utils import roundGrades
 from pandas import NA
 from pandas import isnull
+from random import random
 
-def gradesPlot(data, gradesFinal = None ):
-    
-    gradesFinal = gradesFinal or computeFinalGrades(data)
+def gradesPlot(data, finalGrades):
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
    
     
    
-    def histogramData(gradesFinal):   
+    def histogramData(finalGrades):   
         ''' 
         I created this function for easier reading, and used some structure I used before: dataPlot from Project 1 made by Anna Pekarova, I also used counter from letter_frequency assignment made by Anna Pekarova
         '''
-        counter = {grade: 0 for grade in gradesFinal} # create a counter {grade: zero} for each grade in gradesFinal
+        counter = {grade: 0 for grade in finalGrades} # create a counter {grade: zero} for each grade in gradesFinal
     
-        for grade in gradesFinal:
+        for grade in finalGrades:
             if grade in counter:  # is grade in counter.keys()
                 counter[grade] += 1 #if yes add 1 in counter for the key(grade)
     
@@ -37,7 +36,7 @@ def gradesPlot(data, gradesFinal = None ):
     plt.title('Histogram of grades received by students')  # title of the plot
     plt.xlabel('Grade')  # label of x axis
     plt.ylabel('Number of students')  # label of y axis
-    grades, occurrence = histogramData(gradesFinal)  # gets grades and occurrence from histogram_data() 
+    grades, occurrence = histogramData(finalGrades)  # gets grades and occurrence from histogram_data() 
     plt.bar(grades, occurrence)  # plots the bars
     plt.show() 
     
@@ -62,21 +61,22 @@ def gradesPlot(data, gradesFinal = None ):
              
          xvals = [item for sublist in outx for item in sublist]  # used code from: https://stackoverflow.com/a/952952
          denan = list(zip(xvals,yvals))
+         denan = [(xval, yval) for xval, yval in denan if isnull(yval) == False]
          
-         out = []
-         for xvals,yvals in denan:
-            grades = [yval for yval in yvals if isnull(yval) == False]
-            out.append([xvals,grades])
-         
-         x_vals, y_vals = zip(*out)
+         x_vals, y_vals = zip(*denan)
          return x_vals, y_vals
      
     x_vals,y_vals = scatterData(data) 
+    x_vals = [item + 0.1*random()-0.1 for item in x_vals]
+    y_vals = [item + 0.1*random()-0.1 for item in y_vals]
     plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
     plt.title('Grades per assignment')  # title
     plt.xlabel('Assignments')  # label of x axis
     plt.ylabel('Grades')  # label of y axis
-     
+    plt.scatter(x_vals,y_vals)
+    plt.show()
+    
+        
          
     
      
