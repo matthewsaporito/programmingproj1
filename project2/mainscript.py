@@ -14,6 +14,7 @@ from methods.data_load import *
 from methods.menu import *
 from methods.utils import *
 from methods.displayGrades import *
+import methods.anyexit
 
 os.chdir('/Users/Matt/Desktop/')
 
@@ -56,7 +57,7 @@ while True:
             data = roundGrades()[1]
             displayGrades(finalgrade, data)
         elif selection == 5:
-            anyexit()
+            anykey()
         else:
             print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")#prints if user input is different than 1-5
 
