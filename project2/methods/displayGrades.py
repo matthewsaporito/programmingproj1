@@ -27,19 +27,16 @@ def displayGrades():
     
     df = pd.concat([db,finalgrade],axis=1)
 
-    def color_negative_red(val):
-        color = 'red' if val < 0 else 'black'
-        return 'color: %s' % color
-
-        s= df.style.applymap(color_negative_red)
+    return df.sort_values([1])
     
-        print(s)
     
-    return s
-
     
+    #color = 'red' if val < 0 else 'black'
+    #return 'color: %s' % color
+    #s = df.style.applymap(color_negative_red)
+    
+    #return df
 
-    #print(Framefinalgrade)
     
 
     
