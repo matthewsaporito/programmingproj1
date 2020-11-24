@@ -12,15 +12,15 @@ import pandas as pd
 from pandas import isnull
 from pandas import NA
 from roundgrade8 import roundGrades
+from .utils import *
 
 
-os.chdir('/Users/Matt/Desktop/')
 
 def displayGrades():
     
-    filename = str(input("Please enter The file you wish to load:"))
+    finalgrades = computeFinalGrades
     
-    finalgrade = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
+    finalgrade = pd.DataFrame(finalgrades)
 
     data = roundGrades()[1]
     db = pd.DataFrame(data)

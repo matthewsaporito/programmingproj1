@@ -3,7 +3,7 @@
 """
 Created on Tue Nov 17 16:46:59 2020
 
-@author: Matt
+@author: Matt Saporito
 """
 
 
@@ -66,8 +66,6 @@ def filterData(log=True):
             rownum+=1
         
     data = data.values.tolist()
-    #ddata=data
-    #print(ddata)
     return data
     
 
