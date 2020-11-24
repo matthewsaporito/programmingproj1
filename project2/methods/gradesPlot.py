@@ -10,9 +10,7 @@ from .utils import roundGrades
 from pandas import NA
 from pandas import isnull
 
-def gradesPlot(data, gradesFinal = None ):
-    
-    gradesFinal = gradesFinal or computeFinalGrades(data)
+def gradesPlot(data, finalGrades):
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
@@ -37,7 +35,7 @@ def gradesPlot(data, gradesFinal = None ):
     plt.title('Histogram of grades received by students')  # title of the plot
     plt.xlabel('Grade')  # label of x axis
     plt.ylabel('Number of students')  # label of y axis
-    grades, occurrence = histogramData(gradesFinal)  # gets grades and occurrence from histogram_data() 
+    grades, occurrence = histogramData(finalGrades)  # gets grades and occurrence from histogram_data() 
     plt.bar(grades, occurrence)  # plots the bars
     plt.show() 
     
@@ -62,13 +60,9 @@ def gradesPlot(data, gradesFinal = None ):
              
          xvals = [item for sublist in outx for item in sublist]  # used code from: https://stackoverflow.com/a/952952
          denan = list(zip(xvals,yvals))
+         denan = [(xval, yval) for xval, yval in denan if isnull(yval) == False]
          
-         out = []
-         for xvals,yvals in denan:
-            grades = [yval for yval in yvals if isnull(yval) == False]
-            out.append([xvals,grades])
-         
-         x_vals, y_vals = zip(*out)
+         x_vals, y_vals = zip(*denan)
          return x_vals, y_vals
      
     x_vals,y_vals = scatterData(data) 
