@@ -14,23 +14,19 @@ from pandas import NA
 from .utils import *
 
 
-
-os.chdir('/Users/Matt/Desktop/')
-
 def displayGrades():
     
-    filename = str(input("Please enter The file you wish to load:"))
     
-    finalgrade = pd.DataFrame([line.strip().split(',') for line in open(filename, 'r')]) #pandas code from "zero" at testgrades(witherrors).csv"
+    finalgrade = pd.DataFrame(computeFinalGrades) 
 
     data = roundGrades()[1]
     db = pd.DataFrame(data)
     
     df = pd.concat([db,finalgrade],axis=1)
-
+    print(df.sort_values[1])
     return df.sort_values([1])
     
-    
+
     
     #color = 'red' if val < 0 else 'black'
     #return 'color: %s' % color

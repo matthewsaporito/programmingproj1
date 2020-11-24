@@ -42,9 +42,10 @@ def dataLoad():
     return gdata
 
 
-def filterData(log=True):
-
-    gdata = dataLoad()
+def filterData(gdata=None, log=True):
+    
+    gdata = gdata or dataLoad()
+    
     dfcol1 = pd.DataFrame(gdata, columns =[0])
     duplicaterow = dfcol1[dfcol1.duplicated()]  
     if log:
