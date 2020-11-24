@@ -46,7 +46,9 @@ def filterData(gdata, log=True):
     if log:
         print("\nThe following rows contain duplicate student IDs, the row with the first duplicate occurence will be kept:\n", "\n", duplicaterow.to_string(header = False))
     data = gdata[gdata[0].notnull()].drop_duplicates(subset=0, keep='first') #pandas code from https://stackoverflow.com/questions/45655080/remove-duplicates-using-pandas-python
-        
+     
+    print("\n The data has been filtered, now the number of students is {}.\n".format(len(data.index)))
+    
     if log:       
         colnumber=len(list(gdata.columns))
         datacols = gdata.iloc[:,range(2,colnumber)]

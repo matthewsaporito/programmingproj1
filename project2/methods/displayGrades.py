@@ -14,7 +14,7 @@ from pandas import NA
 from .utils import *
 
 
-def displayGrades():
+def displayGrades(finalgrade, data):
     
     
     finalgrade = pd.DataFrame(computeFinalGrades(data)) 

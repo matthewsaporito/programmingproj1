@@ -27,8 +27,8 @@ print("Hello! This is a program for grading student")
 #data = filecheck()
 data = dataLoad(data)
 
-#print('f{The number of student is:} {len(data.index}')
-#print('f{The number of asingments are:} {count(data.iloc[:,range(2,colnumber)])}')
+print("The number of students is {}.".format(len(data.index)))
+#print("The number of assignments is {}.".format({count(data.iloc[:,range(2,colnumber)])}))
 
 
 #data = gdata
@@ -44,6 +44,7 @@ while True:
 
         if selection == 1:
             data = dataLoad()
+            print("\nThe number of students in this unfiltered file is {}.\n".format(len(data.index)))
         elif selection == 2:
             data = filterData(data)
         elif selection == 3:
@@ -51,7 +52,9 @@ while True:
             finalGrades = computeFinalGrades(data)
             gradesPlot(data, finalGrades)
         elif selection == 4:
-            displayGrades(finalGrades, gdata)
+            finalgrade = computeFinalGrades(data)
+            data = roundGrades()[1]
+            displayGrades(finalgrade, data)
         elif selection == 5:
             anyexit()
         else:
