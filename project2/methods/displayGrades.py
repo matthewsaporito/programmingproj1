@@ -17,7 +17,7 @@ from .utils import *
 def displayGrades():
     
     
-    finalgrade = pd.DataFrame(computeFinalGrades) 
+    finalgrade = pd.DataFrame(computeFinalGrades(data)) 
 
     data = roundGrades()[1]
     db = pd.DataFrame(data)

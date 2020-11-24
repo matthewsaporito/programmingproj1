@@ -51,7 +51,7 @@ while True:
             finalGrades = computeFinalGrades(data)
             gradesPlot(data, finalGrades)
         elif selection == 4:
-            displayGrades()
+            displayGrades(finalGrades, gdata)
         elif selection == 5:
             anyexit()
         else:
