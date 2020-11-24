@@ -36,9 +36,9 @@ def menu(choices):
         else:
             print("Invalid Choice. Please choose one out of", range(1, len(choices)))
             
-def roundGrades():
+def roundGrades(data = None):
     
-    data = filterData(log=False)
+    data = data or filterData(log = False)
 
     for g, (studentID, name, *grades) in enumerate(data):
         for k, i in enumerate(grades):

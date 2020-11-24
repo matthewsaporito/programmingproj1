@@ -9,6 +9,7 @@ from .utils import computeFinalGrades
 from .utils import roundGrades
 from pandas import NA
 from pandas import isnull
+from random import random
 
 def gradesPlot(data, finalGrades):
     
@@ -66,11 +67,16 @@ def gradesPlot(data, finalGrades):
          return x_vals, y_vals
      
     x_vals,y_vals = scatterData(data) 
+    x_vals = [item + 0.1*random()-0.1 for item in x_vals]
+    y_vals = [item + 0.1*random()-0.1 for item in y_vals]
     plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
     plt.title('Grades per assignment')  # title
     plt.xlabel('Assignments')  # label of x axis
     plt.ylabel('Grades')  # label of y axis
-     
+    plt.scatter(x_vals,y_vals)
+    plt.show()
+    
+        
          
     
      
