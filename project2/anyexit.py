@@ -6,6 +6,11 @@ Created on Tue Nov 17 08:59:45 2020
 @author: Sara Sterlie
 """
 import sys
+
 def anykey():
-    a = input('Press a key to exit:')
-    return a
+    print('Press any key to exit')
+    a = input('')
+    if a == "":
+        sys.exit()
+anykey()
+
