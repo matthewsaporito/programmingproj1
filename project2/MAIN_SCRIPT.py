@@ -15,6 +15,7 @@ import numpy as np
 data = None
 selection = None
 gdata = None
+filteredData = None
 
 
 print("Hello! This is a program for grading student")
@@ -42,13 +43,15 @@ while True:
             print(f"\nThe number of assignments is {len(list(data.columns - 2)) - 2}.\n")
 
         elif selection == 2:
-            data = filterData(data)
+            filteredData = filterData(data)
         elif selection == 3:
-            grades = getGrades(data)
+            mdata = filteredData if filteredData else data
+            grades = getGrades(mdata)
             gradesPlot(grades)
         elif selection == 4:
-            ddata = roundData(data)
-            grades = getGrades(data)
+            ndata = filteredData if filteredData else data
+            ddata = roundData(ndata)
+            grades = getGrades(ndata)
             finalgrade = computeFinalGrade(grades)
             displayGrades(finalgrade, ddata)
         elif selection == 5:
