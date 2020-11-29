@@ -11,7 +11,7 @@ import os
 import numpy as np
 import pandas as pd
 from pandas import isnull
-os.chdir('/Users/Matt/Desktop/')
+#os.chdir('/Users/Matt/Desktop/')
 
 #filename = 'testgrades(witherrors).csv'
 

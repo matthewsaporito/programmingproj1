@@ -6,17 +6,15 @@ Created on Sun Nov 15 15:52:51 2020
 @author: Sara Sterlie
 """
 
-
-#from methods.gradesPlot import *
-import pandas as pd
-import numpy as np
+import sys
+#from methods.anyexit import *
+# from methods.gradesPlot import *
 from methods.data_load import *
+from methods.displayGrades import *
 from methods.menu import *
 from methods.utils import *
-from methods.displayGrades import *
-import methods.anyexit
 
-os.chdir('/Users/Matt/Desktop/')
+#os.chdir('/Users/Matt/Desktop/')
 
 data = None
 selection = None
@@ -33,6 +31,9 @@ print("The number of students is {}.".format(len(data.index)))
 
 
 #data = gdata
+
+
+
 
 while True:
     showMenu()

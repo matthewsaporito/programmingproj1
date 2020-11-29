@@ -11,6 +11,5 @@ def anykey():
     print('Press any key to exit')
     a = input('')
     if a == "":
-        sys.exit()
 anykey()
 
