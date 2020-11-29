@@ -127,8 +127,6 @@ def getGrades(data):
          roundedGrades = roundGrades([*assignments])
          out.append(roundedGrades)
      grades = np.array(out)
-     print(grades)
-     print(out)
      return grades
     
 
@@ -208,7 +206,6 @@ def gradesPlot(grades):
     finalGrades1 = computeFinalGrades(grades)
     finalGrades = list(finalGrades1)
     grades1 = list([list(item) for item in grades])
-    print(grades1)
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
@@ -245,7 +242,6 @@ def gradesPlot(grades):
     
     def scatterData(grades1):
          assignmentGrades = grades1  # gets list of lists of grades = gets rid of studentIDs and names
-         print(assignmentGrades)
          yvals = [item for sublist in assignmentGrades for item in sublist]  # used code from: https://stackoverflow.com/a/952952, from a list of lists makes just a list
          outx = []  # cretes an empty list
          
