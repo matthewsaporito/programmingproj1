@@ -59,8 +59,8 @@ while True:
             finalGrades = computeFinalGrades(data)
             gradesPlot(data, finalGrades)
         elif selection == 4:
+            data = roundGrades(data)
             finalgrade = computeFinalGrades(data)
-            data = roundGrades()[1]
             displayGrades(finalgrade, data)
         elif selection == 5:
             anykey()

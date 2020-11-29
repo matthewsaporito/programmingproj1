@@ -36,7 +36,7 @@ def gradesPlot(data, finalGrades):
     plt.title('Histogram of final grades received by students')  # title of the plot
     plt.xlabel('Grade')  # label of x axis
     plt.ylabel('Number of students')  # label of y axis
-    plt.xticks([-3,0,2,4,7,10,12])
+    plt.xticks([-3,0,2,4,7,10,12])  #  plots ticks on x axis
     grades, occurrence = histogramData(finalGrades)  # gets grades and occurrence from histogram_data() 
     plt.bar(grades, occurrence)  # plots the bars
     plt.show() 
@@ -75,10 +75,11 @@ def gradesPlot(data, finalGrades):
     x_vals,y_vals, x_values, y_values = scatterData(data)  # calls the above function to get x and y valus
     x_vals = [item + 0.1*random()-0.1 for item in x_vals]  # adds a random number between -0.1 and 0.1 to each x value
     y_vals = [item + 0.1*random()-0.1 for item in y_vals]  # adds a random number between -0.1 and 0.1 to each y value
-    plt.axis([1, max(x_vals), -3, 12])  # sets the range of the x axis to 1 - max number of assignments and of the y axis from -3 to 12
+    plt.axis([0, max(x_vals) + 1, -4, 13])  # sets the range of the x axis to 0 - max number of assignments + 1 and of the y axis from -4 to 13, I do so so that the plot is visible better
     plt.title('Grades per assignment')  # title
     plt.xlabel('Assignments')  # label of x axis
     plt.ylabel('Grades')  # label of y axis
+    plt.yticks([-3,0,2,4,7,10,12])  # plots ticks on y axis
     plt.scatter(x_vals,y_vals)  # plots the values as a scatter
     plt.plot(x_values, y_values)
     plt.show()

@@ -19,7 +19,6 @@ def displayGrades(finalgrade, data):
     
     finalgrade = pd.DataFrame(computeFinalGrades(data)) 
 
-    data = roundGrades()[1]
     db = pd.DataFrame(data)
     
     df = pd.concat([db,finalgrade],axis=1) #concatenates calculates grades and input data
