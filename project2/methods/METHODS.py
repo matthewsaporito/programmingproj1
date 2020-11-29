@@ -13,11 +13,12 @@ from pandas import isnull
 import matplotlib.pyplot as plt
 from random import random
 import sys
-"""
-Author: Sara Sterlie
 
-"""
 def anykey():
+    """
+    Author: Sara Sterlie
+
+    """
     print('Press any key to exit')
     a = input('') #Takes any input and saves it as variable a
     if a =='':
@@ -141,6 +142,7 @@ def roundGrade(grades):
 def roundData(data):
     """
     Author: Anna Pekarove
+    Rounds grades in data and preserves the rounded grades with studentIDs and names
 
     """
     try:  # tries to change data to list if data is in pandas format
@@ -178,10 +180,6 @@ def getGrades(data):
 def computeFinalGrade(grades):
     """
     Computes final grades
-    Parameters:
-        data: iterable that contains (studentID, name, assignment1, ..., assignmentN)
-    Return: 
-        np.array of final grades
     Author: Anna Pekarova
     """
     
@@ -214,14 +212,15 @@ def computeFinalGrade(grades):
     return gradesFinal
 
 
-"""
-@author: Matt Saporito
-"""
 
-
-#merge calculated finale grade with the rest of grade data to display
 
 def displayGrades(finalgrade, data):
+    """
+    @author: Matt Saporito
+    """
+
+
+    #merge calculated finale grade with the rest of grade data to display
     finalgrade = pd.DataFrame(finalgrade)
 
     finalgrade.columns=['Final Grade']
@@ -236,6 +235,7 @@ def displayGrades(finalgrade, data):
 def gradesPlot(grades):
     """
     Author: Anna Pekarova
+    generate plots for grades
     """
     
     finalGrades1 = computeFinalGrade(grades)  # computes final grades with computeFinalGrades function
@@ -249,7 +249,7 @@ def gradesPlot(grades):
    
     def histogramData(finalGrades):   
         ''' 
-        I created this function for easier reading, and used some structure I used before: dataPlot from Project 1 made by Anna Pekarova, I also used counter from letter_frequency assignment made by Anna Pekarova
+        I created this function for easier reading, and used some structure I used before: dataPlot from Project 1 made by me, I also used counter from letter_frequency assignment made by me
         '''
         counter = {grade: 0 for grade in finalGrades} # create a counter {grade: zero} for each grade in gradesFinal
     
