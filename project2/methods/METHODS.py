@@ -57,7 +57,7 @@ def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in clacu
     return gdata
 
 
-def filterData(gdata, log=True):
+def filterData(gdata, log=True): 
     try:
         dfcol1 = pd.DataFrame(gdata, columns=[0])
     except ValueError:
@@ -119,7 +119,10 @@ def roundGrade(grades):
     return gradesRounded
     
 def roundData(data):
-    data = filterData(data, log = False)
+    try:  # tries to change data to list if data is in pandas format
+         data = data.values.tolist() 
+    except:  # if thar does not work, tries to change data to  list the np.array method
+         data = list([list(item) for item in data])
     
     for g, (studentID, name, *grades) in enumerate(data):
         data[g] = [studentID, name, *roundGrade(grades)]
