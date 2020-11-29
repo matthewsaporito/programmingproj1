@@ -59,7 +59,7 @@ while True:
             finalGrades = computeFinalGrades(data)
             gradesPlot(data, finalGrades)
         elif selection == 4:
-            data = roundGrades(data)
+            data = roundData(data)
             finalgrade = computeFinalGrades(data)
             displayGrades(finalgrade, data)
         elif selection == 5:

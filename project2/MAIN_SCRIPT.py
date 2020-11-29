@@ -27,11 +27,6 @@ print("The number of assignments is {}.".format(len(list(data.columns-2))-2))
 
 
 
-#data = gdata
-
-
-
-
 while True:
     showMenu()
 
@@ -52,10 +47,9 @@ while True:
             grades = getGrades(data)
             gradesPlot(grades)
         elif selection == 4:
-            roundedData = roundData(data)
-            grades = getGrades(roundedData)
-            finalgrade = computeFinalGrades(grades)
-            displayGrades(finalgrade, roundedData)
+            data = roundGrades(data)
+            finalgrade = computeFinalGrades(data)
+            displayGrades(finalgrade, data)
         elif selection == 5:
             anykey()
             break

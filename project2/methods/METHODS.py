@@ -53,31 +53,40 @@ def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in clacu
 
 
 def filterData(gdata, log=True):
-     
-    
-    dfcol1 = pd.DataFrame(gdata, columns =[0])
-    duplicaterow = dfcol1[dfcol1.duplicated()]  
-    if log:  #will only print error rows in a later module if log is true
-        print("\nThe following rows contain duplicate student IDs, the row with the first duplicate occurence will be kept:\n", "\n", duplicaterow.to_string(header = False))
-    data = gdata[gdata[0].notnull()].drop_duplicates(subset=0, keep='first') #pandas code from https://stackoverflow.com/questions/45655080/remove-duplicates-using-pandas-python
-     
+    print(gdata)
+    try:
+        dfcol1 = pd.DataFrame(gdata, columns=[0])
+    except ValueError:
+        gdata = pd.DataFrame.from_records(gdata)
+        dfcol1 = pd.DataFrame(gdata, columns=[0])
+
+    print(dfcol1)
+    duplicaterow = dfcol1[dfcol1.duplicated()]
+    if log:  # will only print error rows in a later module if log is true
+        print(
+            "\nThe following rows contain duplicate student IDs, the row with the first duplicate occurence will be kept:\n",
+            "\n", duplicaterow.to_string(header=False))
+    data = gdata[gdata[0].notnull()].drop_duplicates(subset=0,
+                                                     keep='first')  # pandas code from https://stackoverflow.com/questions/45655080/remove-duplicates-using-pandas-python
+
     print("\n The data has been filtered, now the number of students is {}.\n".format(len(data.index)))
-    
-    if log:  #will only print error rows in a later module if log is true     
-        colnumber=len(list(gdata.columns))
-        datacols = gdata.iloc[:,range(2,colnumber)]  # https://python-forum.io/Thread-Iterating-over-pandas-df-to-check-for-values-out-of-range?page=2
+
+    if log:  # will only print error rows in a later module if log is true
+        colnumber = len(list(gdata.columns))
+        datacols = gdata.iloc[:, range(2,
+                                       colnumber)]  # https://python-forum.io/Thread-Iterating-over-pandas-df-to-check-for-values-out-of-range?page=2
         rownumber = len(gdata.index)
-  
-        rownum =0
+
+        rownum = 0
         for rownumber in datacols.values:
             for i in rownumber:
                 if (i < -3 or i > 12):
-                    print("We found a grade outside range at row number {}, the grade is {}.".format(rownum+2, i))
-            rownum+=1
-        
+                    print("We found a grade outside range at row number {}, the grade is {}.".format(rownum + 2, i))
+            rownum += 1
+
     data = data.values.tolist()
     return data
-    
+
 
 def roundGrades(grades):
     out = grades
@@ -170,33 +179,25 @@ def computeFinalGrades(grades):
     return gradesFinal
 
 
+"""
+Created on Tue Nov 24 13:11:15 2020
+
+@author: Matt Saporito
+"""
+
+
 #merge calculated finale grade with the rest of grade data to display
+
 def displayGrades(finalgrade, data):
-    
-    
-    finalgrade = pd.DataFrame(computeFinalGrades(data)) 
+    finalgrade = pd.DataFrame(computeFinalGrades(data))
+
+    finalgrade.columns=['Final Grade']
 
     db = pd.DataFrame(data)
-    
-    df = pd.concat([db,finalgrade],axis=1) #concatenates calculates grades and input data
-    print(df.sort_values[1])
-    return df.sort_values([1])
-    
-
-    
-    #color = 'red' if val < 0 else 'black'
-    #return 'color: %s' % color
-    #s = df.style.applymap(color_negative_red)
-    
-    #return df
-
-    
-
-    
-    # Sort by ascending student name
-    #df.sort('student')
-    # reverse ascending
-    #df.sort('student', ascending=False)
+    db.columns=['student ID', 'Name', *['Assignment ' + str(x) for x in range(1, len(data[0]) - 1)]]
+    df = pd.concat([db, finalgrade], axis=1)  # concatenates calculates grades and input data
+    print(df.sort_values(['Name']))
+    return df.sort_values(['Name'])
     
 def gradesPlot(grades):
     """
