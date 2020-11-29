@@ -14,8 +14,13 @@ from copy import copy
 from pandas import isnull
 import matplotlib.pyplot as plt
 from random import random
+import sys
 
-
+def anykey():
+    print('Press any key to exit')
+    a = input('')
+    if a =='':
+        sys.exit()
 
 # Menu options presented to user
 def showMenu():
