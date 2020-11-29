@@ -20,6 +20,8 @@ import pandas as pd
 from pandas import isnull
 from .data_load import filterData
 
+from copy import copy
+
 
 
 def menu(choices):
@@ -35,31 +37,42 @@ def menu(choices):
             return choices[selection]
         else:
             print("Invalid Choice. Please choose one out of", range(1, len(choices)))
+
             
+def roundGradeList(grades):
+    out = grades
+    
+    for k, i in enumerate(grades):
+        if (i <= 12 and i >= 11):
+            out[k] = 12
+        elif (i < 11 and i >= 8.5):
+            out[k] = 10
+        elif (i < 8.5 and i >= 5.5):
+            out[k] = 7
+        elif (i < 5.5 and i >= 3):
+            out[k] = 4
+        elif (i < 3 and i >= 1):
+            out[k] = 2
+        elif (i < 1 and i >= -1.5):
+            out[k] = 0
+        elif (i <-1.5 and i >= -3):
+            out[k] = -3
+        else:
+            out[k] = NA
+            
+    return out
+    
+    
+    
 def roundGrades(data):
     
     data = filterData(data, log = False)
 
     for g, (studentID, name, *grades) in enumerate(data):
-        for k, i in enumerate(grades):
-            if (i <= 12 and i >= 11):
-                data[g][k + 2] = 12
-            elif (i < 11 and i >= 8.5):
-                data[g][k + 2] = 10
-            elif (i < 8.5 and i >= 5.5):
-                data[g][k + 2] = 7
-            elif (i < 5.5 and i >= 3):
-                data[g][k + 2] = 4
-            elif (i < 3 and i >= 1):
-                data[g][k + 2] = 2
-            elif (i < 1 and i >= -1.5):
-                data[g][k + 2] = 0
-            elif (i <-1.5 and i >= -3):
-                data[g][k + 2] = -3
-            else:
-                data[g][k + 2] = NA
+        data[g] = [studentID, name, *roundGradeList(grades)]
                 
     data = np.array(data)   
+
     return data
 
 
@@ -93,10 +106,12 @@ def computeFinalGrades(data):
                sortedList = sortedList[1:]  # cuts of the smallest one
            numberOfAssignments = len(sortedList)  # gets the lenght of of a list in the list
            finalGrade = sum(sortedList)/numberOfAssignments  # gets the final grade for each student
-         
-       out.append(finalGrade) # adds this grade to the empty list
-   
-    gradesFinal = np.array(out)  # changes the list into a numpy array
+    
+       out.append(finalGrade)
+       
+    roundedOut =  roundGradeList(out)
+    
+    gradesFinal = np.array(roundedOut)
     return gradesFinal
     
     
