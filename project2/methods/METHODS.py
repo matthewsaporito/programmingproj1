@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Created on Sun Nov 29 14:11:09 2020
-
-@author: apek
+Author: apek
 """
 
 import os
@@ -15,18 +13,23 @@ from pandas import isnull
 import matplotlib.pyplot as plt
 from random import random
 import sys
+"""
+Author: Sara Sterlie
 
+"""
 def anykey():
     print('Press any key to exit')
-    a = input('')
+    a = input('') #Takes any input and saves it as variable a
     if a =='':
-        sys.exit()
+        sys.exit() #exuts program if input is equal to variable a
 
 # Menu options presented to user
 def showMenu():
     """
     Author: Sara Sterlie
-    """  
+
+    """
+    #  - Prints options in menu
     print("1. Load new data.")
     print("2. Check for data errors.")
     print("3. Generate plots")
@@ -35,6 +38,11 @@ def showMenu():
 
 
 def filecheck():
+
+    """
+    Author: Matt Saporito
+
+    """
     #checks that user file exists loads as 'data'
     filename = str(input("Please enter The file you wish to load:"))
     
@@ -51,13 +59,21 @@ def filecheck():
 
 
 def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in claculations
+
+    """
+    Author: Matt Saporito
+
+    """
     gdata = filecheck()
     lll=list(gdata.columns) #gets list of column numbers
     gdata[lll[2:]] = pd.to_numeric(gdata[lll[2:]].stack(), errors='coerce').unstack()#data formatting from https://stackoverflow.com/questions/36814100/pandas-to-numeric-for-multiple-columns
     return gdata
 
 
-def filterData(gdata, log=True): 
+def filterData(gdata, log=True):
+    """
+    Author: Matt Saporito
+    """
     try:
         dfcol1 = pd.DataFrame(gdata, columns=[0])
     except ValueError:
@@ -93,12 +109,16 @@ def filterData(gdata, log=True):
 
 
 def roundGrade(grades):
-    out = grades
+    """
+   Author: Sara Sterlie
+
+    """
+    out = grades #saves input in variable
     
-    for k, i in enumerate(grades):
-        if pd.isnull(i) == True:
+    for k, i in enumerate(grades): #enumerates grades
+        if pd.isnull(i) == True: #if i is NA then will returns NA
             out[k] = NA
-        elif (i <= 12 and i >= 11):
+        elif (i <= 12 and i >= 11): #returns every value rounded to nearest grade on the 7-step-scale
             out[k] = 12
         elif (i < 11 and i >= 8.5):
             out[k] = 10
@@ -119,6 +139,10 @@ def roundGrade(grades):
     return gradesRounded
     
 def roundData(data):
+    """
+    Author: Anna Pekarove
+
+    """
     try:  # tries to change data to list if data is in pandas format
          data = data.values.tolist() 
     except:  # if thar does not work, tries to change data to  list the np.array method
@@ -191,8 +215,6 @@ def computeFinalGrade(grades):
 
 
 """
-Created on Tue Nov 24 13:11:15 2020
-
 @author: Matt Saporito
 """
 
