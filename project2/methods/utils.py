@@ -38,7 +38,7 @@ def menu(choices):
             
 def roundGrades(data):
     
-    data = data or filterData(log = False)
+    data = filterData(data, log = False)
 
     for g, (studentID, name, *grades) in enumerate(data):
         for k, i in enumerate(grades):
@@ -59,10 +59,8 @@ def roundGrades(data):
             else:
                 data[g][k + 2] = NA
                 
-            data = np.array(data)   
-            bdata = data[:,2:]
-            bdata = bdata.tolist()
-    return bdata, data
+    data = np.array(data)   
+    return data
 
 
 def computeFinalGrades(data):
@@ -74,13 +72,15 @@ def computeFinalGrades(data):
         np.array of final grades
     Author: Anna Pekarova
     """
+    
     assignmentGrades = [assignments for studentID, name, *assignments in data]  # gets list of lists of assignment grades
     
     out1 = []  # creates an empty list
     
     for item in assignmentGrades:  # for each list in list of list
-       Grades = [grade for grade in item if isnull(grade) == False]  # get rid of nans
-       out1.append(Grades)  # adds the values to the list
+       
+        Grades = [grade for grade in item if isnull(grade) == False]  # get rid of nans
+        out1.append(Grades)  # adds the values to the list
     
     out = []  # creates a new empty list
     for item in out1:  # for each list in the list out1
