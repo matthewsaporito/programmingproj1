@@ -107,6 +107,8 @@ def roundGrades(grades):
             out[k] = 0
         elif (i <-1.5 and i >= -3):
             out[k] = -3
+        else:
+            out[k] = NA
             
     gradesRounded = out
     return gradesRounded
