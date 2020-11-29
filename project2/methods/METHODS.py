@@ -208,7 +208,7 @@ def gradesPlot(grades):
     Author: Anna Pekarova
     """
     
-    finalGrades1 = computeFinalGrades(grades)  # computes final grades with computeFinalGrades function
+    finalGrades1 = computeFinalGrade(grades)  # computes final grades with computeFinalGrades function
     finalGrades = list(finalGrades1)  # makes list from np.array
     grades1 = list([list(item) for item in grades])  # transform np.array of grades to list of lists
     
