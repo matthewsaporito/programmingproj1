@@ -53,7 +53,6 @@ def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in clacu
 
 
 def filterData(gdata, log=True):
-    print(gdata)
     try:
         dfcol1 = pd.DataFrame(gdata, columns=[0])
     except ValueError:
@@ -92,7 +91,7 @@ def roundGrades(grades):
     out = grades
     
     for k, i in enumerate(grades):
-        if pd.isnull(NA) == True:
+        if pd.isnull(i) == True:
             out[k] = NA
         elif (i <= 12 and i >= 11):
             out[k] = 12
@@ -131,6 +130,7 @@ def getGrades(data):
          data2 = data.values.tolist() 
      except:  # if thar does not work, tries to change data to  list the np.array method
          data2 = list([list(item) for item in data])
+        
     
      out = []  # creates an empty list
      for name,studentID, *assignments in data2:  # for name, studentId, *assignments in data2
@@ -152,11 +152,9 @@ def computeFinalGrades(grades):
     """
     
     assignmentGrades = list(list(grade) for grade in grades) # creates a list from np.array
-    print(assignmentGrades)
     out1 = []  # creates an empty list
-    
     for item in assignmentGrades:  # for each list in list of list
-       
+        
         Grades = [grade for grade in item if isnull(grade) == False]  # get rid of nans
         out1.append(Grades)  # adds the values to the list
     
@@ -166,8 +164,10 @@ def computeFinalGrades(grades):
            finalGrade = -3  # then the final grade is -3
            
        else:
+           
            sortedList = sorted(item)  # sorts the numbers in the list in the list from the smallest up
-           if len(sortedList) > 1:  # if 
+           
+           if len(sortedList) > 1:  
                sortedList = sortedList[1:]  # cuts of the smallest one
            numberOfAssignments = len(sortedList)  # gets the lenght of of a list in the list
            finalGrade = sum(sortedList)/numberOfAssignments  # gets the final grade for each student
@@ -190,7 +190,7 @@ Created on Tue Nov 24 13:11:15 2020
 #merge calculated finale grade with the rest of grade data to display
 
 def displayGrades(finalgrade, data):
-    finalgrade = pd.DataFrame(computeFinalGrades(data))
+    finalgrade = pd.DataFrame(finalgrade)
 
     finalgrade.columns=['Final Grade']
 
