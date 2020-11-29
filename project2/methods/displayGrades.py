@@ -24,6 +24,7 @@ def displayGrades(finalgrade, data):
     db = pd.DataFrame(data)
     db.columns=['student ID', 'Name', *['Assignment ' + str(x) for x in range(1, len(data[0]) - 1)]]
     df = pd.concat([db, finalgrade], axis=1)  # concatenates calculates grades and input data
+    pd.set_option("display.max_rows", None, "Display.max_columns",None, "display.width",2000)
     print(df.sort_values(['Name']))
     return df.sort_values(['Name'])
 

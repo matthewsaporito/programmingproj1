@@ -87,7 +87,7 @@ def filterData(gdata, log=True):
     return data
 
 
-def roundGrades(grades):
+def roundGrade(grades):
     out = grades
     
     for k, i in enumerate(grades):
@@ -115,7 +115,7 @@ def roundData(data):
     data = filterData(data, log = False)
     
     for g, (studentID, name, *grades) in enumerate(data):
-        data[g] = [studentID, name, *roundGrades(grades)]
+        data[g] = [studentID, name, *roundGrade(grades)]
         
     data = np.array(data)
     return data
@@ -134,14 +134,14 @@ def getGrades(data):
     
      out = []  # creates an empty list
      for name,studentID, *assignments in data2:  # for name, studentId, *assignments in data2
-         roundedGrades = roundGrades([*assignments])  # finds rounded grades from assignments calling the function roundGrades
+         roundedGrades = roundGrade([*assignments])  # finds rounded grades from assignments calling the function roundGrades
          out.append(roundedGrades)  # puts the values into the empty list 
      grades = np.array(out)  # changes the list into a np.array
      return grades 
     
 
 
-def computeFinalGrades(grades):
+def computeFinalGrade(grades):
     """
     Computes final grades
     Parameters:
@@ -174,7 +174,7 @@ def computeFinalGrades(grades):
     
        out.append(finalGrade)  #saves a grade into the empty list
        
-    roundedOut =  roundGrades(out)  # rounds the grades
+    roundedOut =  roundGrade(out)  # rounds the grades
     
     gradesFinal = np.array(roundedOut)  # crreates an np.array out of the list
     return gradesFinal
@@ -197,6 +197,7 @@ def displayGrades(finalgrade, data):
     db = pd.DataFrame(data)
     db.columns=['student ID', 'Name', *['Assignment ' + str(x) for x in range(1, len(data[0]) - 1)]]
     df = pd.concat([db, finalgrade], axis=1)  # concatenates calculates grades and input data
+    pd.set_option("display.max_rows", None, "Display.max_columns", None)
     print(df.sort_values(['Name']))
     return df.sort_values(['Name'])
     

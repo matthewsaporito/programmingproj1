@@ -49,7 +49,7 @@ while True:
         elif selection == 4:
             data = roundData(data)
             grades = getGrades(data)
-            finalgrade = computeFinalGrades(grades)
+            finalgrade = computeFinalGrade(grades)
             displayGrades(finalgrade, data)
         elif selection == 5:
             anykey()
