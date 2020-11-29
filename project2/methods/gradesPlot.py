@@ -33,9 +33,10 @@ def gradesPlot(data, finalGrades):
         return grades, occurrence
     
     plt.figure(figsize=(9, 9))  # size of the figure
-    plt.title('Histogram of grades received by students')  # title of the plot
+    plt.title('Histogram of final grades received by students')  # title of the plot
     plt.xlabel('Grade')  # label of x axis
     plt.ylabel('Number of students')  # label of y axis
+    plt.xticks([-3,0,2,4,7,10,12])
     grades, occurrence = histogramData(finalGrades)  # gets grades and occurrence from histogram_data() 
     plt.bar(grades, occurrence)  # plots the bars
     plt.show() 
