@@ -14,4 +14,3 @@ def anykey():
         sys.exit()
 anykey()
 
-
