@@ -12,5 +12,5 @@ def anykey():
     a = input('')
     if a =='':
         sys.exit()
-anykey()
+
 

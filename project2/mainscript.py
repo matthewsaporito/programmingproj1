@@ -50,7 +50,7 @@ while True:
         if selection == 1:
             data = dataLoad()
             print("\nThe number of students in this unfiltered file is {}.\n".format(len(data.index)))
-            print("\nThe number of assignments is {}.\n".format(len(list(data.columns-2))-2))
+            print(f"\nThe number of assignments is {len(list(data.columns - 2)) - 2}.\n")
 
         elif selection == 2:
             data = filterData(data)
