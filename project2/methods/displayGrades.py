@@ -11,34 +11,29 @@ import math as m
 import pandas as pd
 from pandas import isnull
 from pandas import NA
-from .utils import *
+from methods.utils import *
+
 
 #merge calculated finale grade with the rest of grade data to display
+
 def displayGrades(finalgrade, data):
-    
-    
-    finalgrade = pd.DataFrame(computeFinalGrades(data)) 
+    finalgrade = pd.DataFrame(computeFinalGrades(data))
+
+    finalgrade.columns=['Final Grade']
 
     db = pd.DataFrame(data)
-    
-    df = pd.concat([db,finalgrade],axis=1) #concatenates calculates grades and input data
-    print(df.sort_values[1])
-    return df.sort_values([1])
-    
+    db.columns=['student ID', 'Name', *['Assignment ' + str(x) for x in range(1, len(data[0]) - 1)]]
+    df = pd.concat([db, finalgrade], axis=1)  # concatenates calculates grades and input data
+    print(df.sort_values(['Name']))
+    return df.sort_values(['Name'])
 
-    
-    #color = 'red' if val < 0 else 'black'
-    #return 'color: %s' % color
-    #s = df.style.applymap(color_negative_red)
-    
-    #return df
+    # color = 'red' if val < 0 else 'black'
+    # return 'color: %s' % color
+    # s = df.style.applymap(color_negative_red)
 
-    
+    # return df
 
-    
     # Sort by ascending student name
-    #df.sort('student')
+    # df.sort('student')
     # reverse ascending
-    #df.sort('student', ascending=False)
-    
-    
+    # df.sort('student', ascending=False)

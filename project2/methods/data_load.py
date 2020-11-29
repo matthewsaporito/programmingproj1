@@ -40,8 +40,14 @@ def dataLoad(gdata=None): #converts columns 2 onward to numeric for use in clacu
 
 def filterData(gdata, log=True):
      
-    
-    dfcol1 = pd.DataFrame(gdata, columns =[0])
+    print(gdata)
+    try:
+        dfcol1 = pd.DataFrame(gdata, columns =[0])
+    except ValueError:
+        gdata = pd.DataFrame.from_records(gdata)
+        dfcol1 = pd.DataFrame(gdata, columns =[0])
+
+    print(dfcol1)
     duplicaterow = dfcol1[dfcol1.duplicated()]  
     if log:  #will only print error rows in a later module if log is true
         print("\nThe following rows contain duplicate student IDs, the row with the first duplicate occurence will be kept:\n", "\n", duplicaterow.to_string(header = False))
