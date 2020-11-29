@@ -128,15 +128,15 @@ def getGrades(data):
      """
      try:  # tries to change data to list if data is in pandas format
          data2 = data.values.tolist() 
-     except TypeError:  # if thar does not work, tries to change data to  list the np.array method
+     except:  # if thar does not work, tries to change data to  list the np.array method
          data2 = list([list(item) for item in data])
-     
+    
      out = []  # creates an empty list
      for name,studentID, *assignments in data2:  # for name, studentId, *assignments in data2
          roundedGrades = roundGrades([*assignments])  # finds rounded grades from assignments calling the function roundGrades
          out.append(roundedGrades)  # puts the values into the empty list 
      grades = np.array(out)  # changes the list into a np.array
-     return grades
+     return grades 
     
 
 
@@ -150,8 +150,8 @@ def computeFinalGrades(grades):
     Author: Anna Pekarova
     """
     
-    assignmentGrades = list(grades)  # creates a list from np.array
-    
+    assignmentGrades = list(list(grade) for grade in grades) # creates a list from np.array
+    print(assignmentGrades)
     out1 = []  # creates an empty list
     
     for item in assignmentGrades:  # for each list in list of list
