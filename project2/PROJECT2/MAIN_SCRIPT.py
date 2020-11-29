@@ -44,7 +44,7 @@ while True:
         # If user input is 1, scrtipt loads new data through dataLoad function, and prints number of students and assingments in new data-file.
         elif selection == 2:
             filteredData =  filterData(data)
-        # If unser input is 2, script displays filtered data through filterData function.
+        # If user input is 2, script displays filtered data through filterData function.
         elif selection == 3:
             mdata = filteredData if filteredData else data
             grades = getGrades(mdata)
@@ -62,7 +62,7 @@ while True:
             break
         # If user input is 5, script exits through anykey function
         else:
-            print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")#prints if user input is different than 1-5
+            print("Invalid Choice. PLease enter one of the above options (1, 2, 3, 4 or 5)!")# Prints if user input is different than 1-5
 
     except ValueError:
        print("please type a number 1-5") # In case of value error script prints except statement.
