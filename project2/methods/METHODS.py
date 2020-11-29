@@ -92,7 +92,9 @@ def roundGrades(grades):
     out = grades
     
     for k, i in enumerate(grades):
-        if (i <= 12 and i >= 11):
+        if pd.isnull(NA) == True:
+            out[k] = NA
+        elif (i <= 12 and i >= 11):
             out[k] = 12
         elif (i < 11 and i >= 8.5):
             out[k] = 10
@@ -106,8 +108,7 @@ def roundGrades(grades):
             out[k] = 0
         elif (i <-1.5 and i >= -3):
             out[k] = -3
-        else:
-            out[k] = NA
+            
     gradesRounded = out
     return gradesRounded
     
