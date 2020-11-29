@@ -115,18 +115,18 @@ def roundData(data):
 def getGrades(data):
      """
      Author: Anna Pekarove
-     use: 
+     use: gets An N ×M matrix containing grades on the 7-step-scale given to N students on M different assignments from data.
      """
-     try:
-         data2 = data.values.tolist()
-     except TypeError:
+     try:  # tries to change data to list if data is in pandas format
+         data2 = data.values.tolist() 
+     except TypeError:  # if thar does not work, tries to change data to  list the np.array method
          data2 = list([list(item) for item in data])
      
-     out = []
-     for name,studentID, *assignments in data2:
-         roundedGrades = roundGrades([*assignments])
-         out.append(roundedGrades)
-     grades = np.array(out)
+     out = []  # creates an empty list
+     for name,studentID, *assignments in data2:  # for name, studentId, *assignments in data2
+         roundedGrades = roundGrades([*assignments])  # finds rounded grades from assignments calling the function roundGrades
+         out.append(roundedGrades)  # puts the values into the empty list 
+     grades = np.array(out)  # changes the list into a np.array
      return grades
     
 
@@ -203,9 +203,9 @@ def gradesPlot(grades):
     Author: Anna Pekarova
     """
     
-    finalGrades1 = computeFinalGrades(grades)
-    finalGrades = list(finalGrades1)
-    grades1 = list([list(item) for item in grades])
+    finalGrades1 = computeFinalGrades(grades)  # computes final grades with computeFinalGrades function
+    finalGrades = list(finalGrades1)  # makes list from np.array
+    grades1 = list([list(item) for item in grades])  # transform np.array of grades to list of lists
     
     #  PLOT FINAL GRADES
     #  ------------------------------------------------------------------------
