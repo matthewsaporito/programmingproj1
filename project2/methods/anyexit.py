@@ -10,6 +10,8 @@ import sys
 def anykey():
     print('Press any key to exit')
     a = input('')
-    if a == "":
+    if a =='':
+        sys.exit()
 anykey()
+
 
