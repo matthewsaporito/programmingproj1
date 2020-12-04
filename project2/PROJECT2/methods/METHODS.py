@@ -81,7 +81,6 @@ def filterData(gdata, log=True):
         gdata = pd.DataFrame.from_records(gdata)
         dfcol1 = pd.DataFrame(gdata, columns=[0])
 
-    print(dfcol1)
     duplicaterow = dfcol1[dfcol1.duplicated()]
     if log:  # will only print error rows in a later module if log is true
         print(
@@ -90,7 +89,8 @@ def filterData(gdata, log=True):
     data = gdata[gdata[0].notnull()].drop_duplicates(subset=0,
                                                      keep='first')  # pandas code from https://stackoverflow.com/questions/45655080/remove-duplicates-using-pandas-python
 
-    print("\n The data has been filtered, now the number of students is {}.\n".format(len(data.index)))
+    if log:
+        print("\n The data has been filtered, now the number of students is {}.\n".format(len(data.index)))
 
     if log:  # will only print error rows in a later module if log is true
         colnumber = len(list(gdata.columns))
@@ -102,7 +102,8 @@ def filterData(gdata, log=True):
         for rownumber in datacols.values:
             for i in rownumber:
                 if (i < -3 or i > 12):
-                    print("We found a grade outside range at row number {}, the grade is {}.".format(rownum + 2, i))
+                    if log:
+                        print("We found a grade outside range at row number {}, the grade is {}.".format(rownum + 2, i))
             rownum += 1
 
     data = data.values.tolist()
