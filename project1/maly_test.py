@@ -1,0 +1,1 @@
+print("Zkoušíme Git repository")
